@@ -1,14 +1,11 @@
-.content {
+/* .content {
   grid-area: c;
   background-color: coral;
   padding: 10px;
-}
+} */
 
 .content img {
   width: 1000px;
-  height: 200px;
+  height: 150px;
 }
 
-.item {
-  color:greenyellow;
-}

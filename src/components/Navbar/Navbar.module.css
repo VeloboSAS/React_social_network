@@ -4,10 +4,10 @@
     padding: 10px;
   }
 
-.item {
+/* .item a{
     color:blueviolet;
 } 
 
-.active {
-  color:blue;
-}
+.item a.active{
+  color: red;
+} */
