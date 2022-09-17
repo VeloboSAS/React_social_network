@@ -1,17 +1,14 @@
 import React from "react";
 import s from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
-import Images from "./Images/Images";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Navbar = () => {
     return (
         <div className={s.content}>
-            <Images />
-            <div>
-                ava  + description
-            </div>
-            <MyPosts hi="yo"/>
+            <ProfileInfo />
+            <MyPosts/>
         </div>
         );
     
