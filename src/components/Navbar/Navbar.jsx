@@ -5,22 +5,29 @@ import {NavLink} from "react-router-dom";
 
 
 const Navbar = () => {
+
+    const style = ({ isActive }) => ({
+        fontWeight: isActive ? 'bold' : 'normal',
+        color: isActive ? 'blue' : 'blueviolet',
+      });
+
+
     return (
         <nav className={s.nav}>
             <div>
-                <NavLink to='/profile' style={({ isActive }) => ({color: isActive ? 'blue' : 'blueviolet'})}>Profile</NavLink>
+                <NavLink to='/profile' style={style}>Profile</NavLink>
             </div>
             <div> 
-                <NavLink to='/dialogs' style={({ isActive }) => ({color: isActive ? 'blue' : 'blueviolet'})}>Messages</NavLink>
+                <NavLink to='/dialogs' style={style}>Messages</NavLink>
             </div>
             <div> 
-                <NavLink to='/news' style={({ isActive }) => ({color: isActive ? 'blue' : 'blueviolet'})}>News</NavLink>
+                <NavLink to='/news' style={style}>News</NavLink>
             </div>
             <div> 
-                <NavLink to='/music' style={({ isActive }) => ({color: isActive ? 'blue' : 'blueviolet'})}>Music</NavLink>
+                <NavLink to='/music' style={style}>Music</NavLink>
             </div>
             <div> 
-                <NavLink to='/settings' style={({ isActive }) => ({color: isActive ? 'blue' : 'blueviolet'})}>Settings</NavLink>
+                <NavLink to='/settings' style={style}>Settings</NavLink>
             </div>
         </nav>
         );

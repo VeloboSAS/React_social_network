@@ -4,11 +4,12 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+    debugger;
     return (
         <div className={s.content}>
             <ProfileInfo />
-            <MyPosts/>
+            <MyPosts posts={props.state.posts}/>
         </div>
         );
     
