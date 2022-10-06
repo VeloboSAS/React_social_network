@@ -9,7 +9,10 @@ const Navbar = (props) => {
     return (
         <div className={s.content}>
             <ProfileInfo />
-            <MyPosts posts={props.state.posts}/>
+            <MyPosts posts={props.profilePages.posts}
+                    newPostText={props.profilePages.newPostText}
+                    updateNewPostText={props.updateNewPostText}
+                    addPost={props.addPost}/>
         </div>
         );
     

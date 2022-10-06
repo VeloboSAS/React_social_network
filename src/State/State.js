@@ -1,7 +1,4 @@
-import img_1 from './1.jpg';
-import img_2 from './2.jpg';
-import img_3 from './3.jpg';
-import img_4 from './4.jpg';
+import { rerenderEntireTree } from '../render';
 
 let state = {
 
@@ -12,14 +9,15 @@ let state = {
         { id: 2, message: "Oups", likesCount: 1},
         { id: 3, message: "Oupsss", likesCount: 12},
       ],
+      newPostText: 'it-kamasut',
     },
 
     dialogsPages: {
         dialogs: [
-            {id: 1, name: 'Alex', img: {img_1}},
-            {id: 2, name: 'Nastya', img: {img_2}},
-            {id: 3, name: 'Alina', img: {img_3}},
-            {id: 4, name: 'Artem', img: {img_4}},
+            {id: 1, name: 'Alex', img: './1.jpg'},
+            {id: 2, name: 'Nastya', img: './2.jpg'},
+            {id: 3, name: 'Alina', img: './3.jpg'},
+            {id: 4, name: 'Artem', img: './4.jpg'},
     
     ],
         messages: [
@@ -28,6 +26,39 @@ let state = {
             {id: 3, message: 'Hello World'}
             ],
     },
+    sidebar: {},
+};  
 
+window.state = state
+
+export let addPost =  () => {
+
+    let newPost = {
+        id: 5,
+        message: state.profilePages.newPostText,
+        likesCount: 0
+    };
+
+    state.profilePages.posts.push(newPost);
+    state.profilePages.newPostText = "";
+    rerenderEntireTree(state);
 };
+
+export let updateNewPostText =  (newText) => {
+
+    state.profilePages.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
+export let addMessage =  (message) => {
+
+    let newMessage = {
+        id: 5,
+        message: message,
+    };
+    
+    state.dialogsPages.messages.push(newMessage);
+    rerenderEntireTree(state);
+};
+
 export default state;

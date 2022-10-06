@@ -19,7 +19,14 @@
 .messages {
  padding: 10px;
 }
-/* 
-.message {
 
-} */
+.item img {
+    width: 50px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+.addMessages {
+    padding-top: 20px;
+}  
+  

@@ -4,12 +4,13 @@ import s from './Ava.module.css';
 
 
 const Ava = (props) => {
+    debugger;
     return (
-                <div className={s.item}> 
-                    <div className={s.img} >
-                        <img src={props.img} id={props.id} alt="" />
-                    </div>
+            <div className={s.item}> 
+                <div className={s.img} >
+                    <img src={props.img} alt="" />
                 </div>
+            </div>
         ); 
 }
 
