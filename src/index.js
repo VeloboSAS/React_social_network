@@ -1,28 +1,25 @@
 import reportWebVitals from './reportWebVitals';
-import state from './State/State';
+import store from './State/State';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { addPost, addMessage, updateNewPostText } from './State/State';
-import { subscribe } from './State/State'; 
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
     root.render(
 
     <React.StrictMode>
-      <App state={state}  addPost={addPost}
-                          updateNewPostText={updateNewPostText}
-                          addMessage={addMessage}/>
+      <App state={state}  addPost={store.addPost.bind(store)}
+                          updateNewPostText={store.updateNewPostText.bind(store)}
+                          addMessage={store.addMessage.bind(store)}/>
     </React.StrictMode>
 );
 }
 
  
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 reportWebVitals(); 

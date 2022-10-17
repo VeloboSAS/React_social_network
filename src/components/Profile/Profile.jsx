@@ -5,7 +5,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Navbar = (props) => {
-    debugger;
     return (
         <div className={s.content}>
             <ProfileInfo />
