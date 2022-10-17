@@ -27,43 +27,40 @@ let store = {
         },
         sidebar: {},
     },
-    getState() {
-        debugger;
-        return this._state;
-    },
     _callSuscriber() {
         console.log('State was changed')
     },
-    addPost() {
-        debugger;
-        let newPost = {
-            id: 5,
-            message: this._state.profilePages.newPostText,
-            likesCount: 0
-        };
-    
-        this._state.profilePages.posts.push(newPost);
-        this._state.profilePages.newPostText = "";
-        this._callSuscriber(this._state);
-    },
-    updateNewPostText(newText) {
 
-        this._state.profilePages.newPostText = newText;
-        this._callSuscriber(this._state);
-    },
-    addMessage(message) {
-
-        let newMessage = {
-            id: 5,
-            message: message,
-        };
-        
-        this._state.dialogsPages.messages.push(newMessage);
-        this._callSuscriber(this._state);
+    getState() {
+        return this._state;
     },
     subscribe(observer) {
         this._callSuscriber = observer;
     },
+
+    dispatch (action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePages.newPostText,
+                likesCount: 0
+            };
+        
+            this._state.profilePages.posts.push(newPost);
+            this._state.profilePages.newPostText = "";
+            this._callSuscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePages.newPostText = action.newText;
+            this._callSuscriber(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 5,
+                message: action.message,
+            };
+            this._state.dialogsPages.messages.push(newMessage);
+            this._callSuscriber(this._state);
+        }
+    }
 }
 
 export default store;

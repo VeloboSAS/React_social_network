@@ -37,14 +37,10 @@ const Dialogs = (props) => {
 
     let newMessagesElement = React.createRef();
 
-    // let addMessages = () => {
-    //     let text = newMessagesElement.current.value;
-    //     alert(text)}
-
     let addMessage = () => {
 
         let text = newMessagesElement.current.value;
-        props.addMessage(text);
+        props.dispatch({type: 'ADD-MESSAGE', message: text});
         newMessagesElement.current.value = '';
     }    
 

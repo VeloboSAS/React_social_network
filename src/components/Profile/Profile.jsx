@@ -10,8 +10,7 @@ const Navbar = (props) => {
             <ProfileInfo />
             <MyPosts posts={props.profilePages.posts}
                     newPostText={props.profilePages.newPostText}
-                    updateNewPostText={props.updateNewPostText}
-                    addPost={props.addPost}/>
+                    dispatch={props.dispatch}/>
         </div>
         );
     
