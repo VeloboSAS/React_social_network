@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import Ava from './Ava/Ava';
 import s from './Dialogs.module.css';
+import {addMessageActionCreator} from '../../State/State';
 
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
@@ -40,7 +40,7 @@ const Dialogs = (props) => {
     let addMessage = () => {
 
         let text = newMessagesElement.current.value;
-        props.dispatch({type: 'ADD-MESSAGE', message: text});
+        props.dispatch(addMessageActionCreator(text));
         newMessagesElement.current.value = '';
     }    
 
