@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from './Dialogs.module.css';
-import {addMessageActionCreator} from '../../State/State';
+import {sendMessageCreator, updateNewMessageBodyCreator} from '../../State/State';
 
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
@@ -32,17 +32,19 @@ const Message = (props) => {
 const Dialogs = (props) => {
 
     let dialogsElement = props.state.dialogs.map(d => <DialogItem img={d.img} name={d.name} key={d.id} id={d.id}/>)
-
     let messagesElement = props.state.messages.map(m => <Message message={m.message} key={m.id}/>)
 
-    let newMessagesElement = React.createRef();
+    let newMessageBody = props.state.newMessageBody;
 
-    let addMessage = () => {
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator());
 
-        let text = newMessagesElement.current.value;
-        props.dispatch(addMessageActionCreator(text));
-        newMessagesElement.current.value = '';
-    }    
+    } 
+    
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body));
+    }
 
     return (
             <div className={s.dialogs}>
@@ -51,13 +53,19 @@ const Dialogs = (props) => {
                 </div>
                 
                 <div className={s.messages}>
-                    { messagesElement }
+                    <div>{ messagesElement }</div>
                     <div className={s.addMessages}>
                         <div>
-                            <textarea rows="1" cols="17" ref={newMessagesElement}></textarea>
+                            <textarea
+                             value = {newMessageBody}
+                             onChange = { onNewMessageChange }
+                             rows="1" 
+                             cols="17" 
+                             placeholder="Enter your message"
+                             ></textarea>
                         </div>    
                         <div>   
-                            <button className={s.button} onClick={ addMessage }>Add Message</button>
+                            <button className={s.button} onClick={ onSendMessageClick }>Send Message</button>
                         </div>
                     </div>
                 </div>

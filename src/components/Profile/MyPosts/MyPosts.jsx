@@ -1,8 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import Post from './Posts/Post';
-import { addPostActionCreator } from '../../../State/State';
-import { updateNewPostTextActionCreator } from '../../../State/State';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../State/State';
 
 
 const MyPosts = (props) =>{
