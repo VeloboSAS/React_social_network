@@ -18,10 +18,10 @@ let store = {
     
         dialogsPages: {
             dialogs: [
-                {id: 1, name: 'Alex', img: './1.jpg'},
-                {id: 2, name: 'Nastya', img: './2.jpg'},
-                {id: 3, name: 'Alina', img: './3.jpg'},
-                {id: 4, name: 'Artem', img: './4.jpg'},
+                {id: 1, name: 'Alex', img: 'https://avatars.mds.yandex.net/i?id=31637953c75d4d4c928ae5a9cf21d05b6f9620b3-7084983-images-thumbs&n=13'},
+                {id: 2, name: 'Nastya', img: 'https://avatars.mds.yandex.net/i?id=423ebd40b07d5b760b0443ab189cfb29502120ab-7012371-images-thumbs&n=13'},
+                {id: 3, name: 'Alina', img: 'https://avatars.mds.yandex.net/i?id=dc1d33e0d266da8181e375fe785a133b9c58a0b9-5714527-images-thumbs&n=13'},
+                {id: 4, name: 'Artem', img: 'https://avatars.mds.yandex.net/i?id=934cf45106d5234e2d3f9aec6ab7ab4e-5348870-images-thumbs&n=13'},
                 ],
             messages: [
                 {id: 1, message: "Hi"},
