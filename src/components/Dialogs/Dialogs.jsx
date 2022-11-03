@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from './Dialogs.module.css';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../State/State';
+import {sendMessageCreator, updateNewMessageBodyCreator} from '../../Redux/dialogsReducer';
 import Ava from './Ava/Ava';
  
 const DialogItem = (props) => {
