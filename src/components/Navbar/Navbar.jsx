@@ -21,10 +21,13 @@ const Navbar = () => {
                 <NavLink to='/dialogs' style={style}>Messages</NavLink>
             </div>
             <div> 
-                <NavLink to='/news' style={style}>News</NavLink>
+                <NavLink to='/count' style={style}>Count</NavLink>
             </div>
             <div> 
-                <NavLink to='/music' style={style}>Music</NavLink>
+                <NavLink to='/modal' style={style}>Modal</NavLink>
+            </div>
+            <div> 
+                <NavLink to='/quiz' style={style}>Quiz</NavLink>
             </div>
             <div> 
                 <NavLink to='/settings' style={style}>Settings</NavLink>
