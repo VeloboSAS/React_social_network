@@ -32,11 +32,12 @@ const Message = (props) => {
 }
 
 const Dialogs = (props) => {
+    let state = props.store.getState().dialogsPages;
 
-    let dialogsElement = props.state.dialogs.map(d => <DialogItem img={d.img} name={d.name} key={d.id} id={d.id}/>)
-    let messagesElement = props.state.messages.map(m => <Message message={m.message} key={m.id}/>)
+    let dialogsElement = state.dialogs.map(d => <DialogItem img={d.img} name={d.name} key={d.id} id={d.id}/>)
+    let messagesElement = state.messages.map(m => <Message message={m.message} key={m.id}/>)
 
-    let newMessageBody = props.state.newMessageBody;
+    let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
         props.store.dispatch(sendMessageCreator());
