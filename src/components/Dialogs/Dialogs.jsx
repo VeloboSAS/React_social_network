@@ -1,38 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import s from './Dialogs.module.css';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../Redux/dialogsReducer';
-import Ava from './Ava/Ava';
- 
-const DialogItem = (props) => {
-    let path = "/dialogs/" + props.id;
-
-    const style = ({ isActive }) => ({
-        fontWeight: isActive ? 'bold' : 'normal',
-        color: isActive ? 'blue' : 'blueviolet',
-      });
-
-    return (
-        <>
-            <Ava img={props.img} name={props.name}/>
-
-            <div className={s.dialog + ' ' + s.active}>
-                <NavLink to={path} style={style} >{props.name}</NavLink>
-            </div>
-        </>
-    );
-};
-
-const Message = (props) => {
-
-    return (
-            <div className={s.message}>{props.message}</div>
-                
-    )
-}
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-    let state = props.store.getState().dialogsPages;
+    let state = props.dialogsPage;
 
     let dialogsElement = state.dialogs.map(d => <DialogItem img={d.img} name={d.name} key={d.id} id={d.id}/>)
     let messagesElement = state.messages.map(m => <Message message={m.message} key={m.id}/>)
@@ -40,13 +12,13 @@ const Dialogs = (props) => {
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.sendMessage();
 
     } 
     
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.updateNewMessageBody(body);
     }
 
     return (
