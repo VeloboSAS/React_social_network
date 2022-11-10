@@ -11,7 +11,7 @@ import Quiz from './components/Quiz/Quiz';
 import Settings from './components/Settings/Settings';
 
 
-const App = (props) => {
+const App = () => {
 
   return (
     <BrowserRouter>
@@ -20,8 +20,8 @@ const App = (props) => {
         <Navbar />
         <div className="app-wrapper-content">
             <Routes>
-              <Route  path="/dialogs/*" element={ <DialogsContainer store={props.store}/>}></Route>
-              <Route  path="/profile" element={ <Profile store={props.store} />}></Route>
+              <Route  path="/dialogs/*" element={ <DialogsContainer />}></Route>
+              <Route  path="/profile" element={ <Profile  />}></Route>
               <Route  path="/count" element={<Count />}></Route>
               <Route  path="/modal" element={<Modal />}></Route>
               <Route  path="/quiz" element={<Quiz />}></Route>
