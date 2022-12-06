@@ -1,11 +1,13 @@
 .content {
   grid-area: c;
-  background-color: coral;
-  padding: 10px;
+  background-color: #51dad0;
+  /* padding: 10px; */
+  /* height: 80vh; */
+  height: auto;
 }
 
 .content img {
-  width: 1000px;
+  width: 1100px;
   height: 150px;
 }
 

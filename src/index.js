@@ -7,7 +7,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let rerenderEntireTree = () => {
+// let rerenderEntireTree = () => {
     root.render(
 
     <React.StrictMode>
@@ -16,13 +16,13 @@ let rerenderEntireTree = () => {
         </Provider>
     </React.StrictMode>
 );
-}
+// }
 
-rerenderEntireTree(store.getState());
+// rerenderEntireTree(store.getState());
 
-store.subscribe(() => {
-  rerenderEntireTree();
-});
+// store.subscribe(() => {
+//   rerenderEntireTree();
+// });
 
 
 reportWebVitals(); 
