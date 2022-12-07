@@ -4,7 +4,7 @@ import s from './Settings.module.css';
 const Settings = (props) => {
     return (
         <div className={s.settings}>
-            Settings
+            <h3 style={{color: "purple"}}>Settings</h3>
         </div>
     );
     

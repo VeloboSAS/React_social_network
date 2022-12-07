@@ -22,6 +22,10 @@ const Dialogs = (props) => {
     }
 
     return (
+        <>
+            <div>
+                <h3 style={{color: 'purple'}}>Messages</h3>
+            </div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItems }>
                     { dialogsElement }
@@ -45,6 +49,7 @@ const Dialogs = (props) => {
                     </div>
                 </div>
             </div>
+            </>
     );
     
 }

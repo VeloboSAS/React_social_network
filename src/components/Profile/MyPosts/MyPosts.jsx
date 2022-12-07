@@ -22,7 +22,7 @@ const MyPosts = (props) =>{
 
     return (
             <div>
-                <h3>My Posts</h3>
+                <h3 style={{color: 'purple'}}>My Posts</h3>
                 <div>
                     <textarea onChange={onPostChange} rows="1" cols="17" ref={newPostElement} value={props.newPostText} />
                 </div>    
