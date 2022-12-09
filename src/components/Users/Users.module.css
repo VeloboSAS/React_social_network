@@ -1,0 +1,18 @@
+.users {
+    /* height: 80vh; */
+    height: auto;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 3fr 4fr 5fr;
+    padding: 10px;
+    color: purple;
+}
+
+.photoUrl {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+}

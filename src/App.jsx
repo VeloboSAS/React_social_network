@@ -8,7 +8,7 @@ import Profile from './components/Profile/Profile';
 import Count from './components/Count/Count';
 import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
-// import AppUsers  from './components/Users/AppUsers';
+import UsersContainer  from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
 
 
@@ -24,6 +24,7 @@ const App = () => {
             <Routes>
               <Route  path="/dialogs/*" element={ <DialogsContainer />}></Route>
               <Route  path="/profile" element={ <Profile  />}></Route>
+              <Route  path="/users" element={<UsersContainer />}></Route>
               <Route  path="/count" element={<Count />}></Route>
               <Route  path="/modal" element={<Modal />}></Route>
               <Route  path="/quiz" element={<Quiz />}></Route>
