@@ -4,15 +4,6 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users:  []
-        // { id: 1, photoUrl: "https://avatars.mds.yandex.net/i?id=b24d083b576ed7b4e19387c4a48058f6e1f71d23-7755770-images-thumbs&n=13",
-        //  followed: false, fullName: "Alex",status: "A'm a boss", location: {city: "Minsk", country: "Belarus"}},
-        // { id: 2, photoUrl: "https://avatars.mds.yandex.net/i?id=b24d083b576ed7b4e19387c4a48058f6e1f71d23-7755770-images-thumbs&n=13",
-        // followed: false, fullName: "Nastya",status: "A'm a boss too", location: {city: "Moskow", country: "Russia"}},
-        // { id: 3, photoUrl: "https://avatars.mds.yandex.net/i?id=b24d083b576ed7b4e19387c4a48058f6e1f71d23-7755770-images-thumbs&n=13",
-        // followed: true, fullName: "Alina",status: "A'm a boss too", location: {city: "Sochi", country: "Russia"}},
-        // { id: 4, photoUrl: "https://avatars.mds.yandex.net/i?id=b24d083b576ed7b4e19387c4a48058f6e1f71d23-7755770-images-thumbs&n=13",
-        // followed: true, fullName: "Artem",status: "A'm a boss too", location: {city: "Paris", country: "France"}},
-    //   ]
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -38,9 +29,10 @@ const usersReducer = (state = initialState, action) => {
         }
         case SET_USERS: {
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: action.users
             }
         }
+        
         default:  return state;     
     }
 }

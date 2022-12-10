@@ -1,7 +1,8 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    height: 80vh;
+    min-height: 70vh;
+    height: auto;
 }
 
 .dialogsItem {
