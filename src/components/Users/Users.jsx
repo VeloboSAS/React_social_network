@@ -7,14 +7,42 @@ class Users extends Component {
 
     componentDidMount() {
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then( response => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
+                })
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then( response => {
                 this.props.setUsers(response.data.items)
                 })
     }
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = []
+
+        for (let i=1; i <= pagesCount; i++) {
+            pages.push(i);
+            // let curP = this.props.currentPage;
+            // let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
+            // let curPL = curP + 5;
+            // let slicedPages = pages.slice( curPF, curPL);
+        }
         return <div className={s.users}>
                     <div>
                         <h3 style={{color: "purple"}}>Users</h3>
+                    </div>
+                    <div>
+                        { pages.map( p => {
+                            return <span className={this.props.currentPage === p && s.selectedPage}
+                            onClick={ (e) => {this.onPageChanged(p)}}>{p}</span>
+                        })}
+
+
                     </div>
                     {
                     this.props.users.map( (u, index) => <div key={index} className={s.content}>
