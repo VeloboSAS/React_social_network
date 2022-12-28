@@ -18,23 +18,19 @@
 }
 
 .pagination{
-    /* display: block; */
-    justify-content: space-between;
-    margin-left: 10px;
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 2% 0;
+    padding: 5px 15px;
 }
 
 .selectedPage {
-    font-weight: bold;
-    cursor: pointer;
-    /* width: 40%;
-    height: auto;
-    background-color: bisque;
-    margin: auto;
-    border: 2px solid black; */
-    /* border-spacing: 20px; */
     border: 2px solid #6c7ac9;
+    padding: 5px 15px;
     border-radius: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: -5px 10px;
+
 
 }
