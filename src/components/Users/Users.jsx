@@ -27,17 +27,19 @@ class Users extends Component {
 
         for (let i=1; i <= pagesCount; i++) {
             pages.push(i);
-            // let curP = this.props.currentPage;
-            // let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
-            // let curPL = curP + 5;
-            // let slicedPages = pages.slice( curPF, curPL);
         }
+
+        let curP = this.props.currentPage;
+        let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
+        let curPL = curP + 5;
+        let slicedPages = pages.slice( curPF, curPL);
+
         return <div className={s.users}>
                     <div>
                         <h3 style={{color: "purple"}}>Users</h3>
                     </div>
-                    <div>
-                        { pages.map( p => {
+                    <div className={s.pagination}>
+                        { slicedPages.map( p => {
                             return <span className={this.props.currentPage === p && s.selectedPage}
                             onClick={ (e) => {this.onPageChanged(p)}}>{p}</span>
                         })}
