@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import s from './Users.module.css';
 import user from '../../images/user.jpg';
+// import ReactPaginate from "react-paginate";
 
 const Users = (props) => {
+
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
         let pages = []
@@ -16,6 +18,37 @@ const Users = (props) => {
         let curPL = curP + 5;
         let slicedPages = pages.slice( curPF, curPL); 
 
+    // const {data} = props;
+    // const [currentUsers, setCurrentUsers] = useState([]);
+    // const [pageCount, setPageCount] = useState(0);
+    // const [itemOffset, setItemOffset] = useState(0);
+    // const itemOffset = 0
+
+    // const itemsPerPage = props.pageSize;
+    // const totalUsersCount = props.totalUsersCount;
+
+    // useEffect(() => {
+    //     const endOffset = itemOffset + itemsPerPage;
+    //     setCurrentUsers(props.users.slice(itemOffset, endOffset));
+    //     setPageCount(Math.ceil(totalUsersCount /itemsPerPage));
+    // }, [])
+
+
+    // const [itemOffset, setItemOffset] = useState(0);
+
+    // const endOffset = itemOffset + itemsPerPage;
+
+    // const currentUsers = props.users.slice(itemOffset, endOffset);
+    // const pageCount = Math.ceil(totalUsersCount / itemsPerPage);
+  
+
+    // const handlePageClick = (event) => {
+    //   const newOffset = (event.selected * itemsPerPage) % totalUsersCount;
+
+    //   setItemOffset(newOffset);
+    // };
+
+
     return <div className={s.users}>
                 <div>
                     <h3 style={{color: "purple"}}>Users</h3>
@@ -26,7 +59,23 @@ const Users = (props) => {
                         onClick={ (e) => {props.onPageChanged(p)}}>{p}</span>
                     })}
                 </div>
-                {
+                {/* <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="next >"
+                    // onPageChange={handlePageClick}
+                    onPageChange={props.onPageChange}
+                    pageRangeDisplayed={3}
+                    pageCount={pageCount}
+                    previousLabel="< previous"
+                    renderOnZeroPageCount={null}
+                    containerClassName={s.pagination}
+                    pageLinkClassName={s.page_num}
+                    previousLinkClassName={s.page_num}
+                    nextLinkClassName={s.page_num}
+                    activeLinkClassName={s.active}
+
+            /> */}
+                { 
                 props.users.map( (u, index) => <div key={index} className={s.content}>
                         <span>
                             <div>

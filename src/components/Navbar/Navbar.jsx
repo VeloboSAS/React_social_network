@@ -35,6 +35,9 @@ const Navbar = () => {
             <div> 
                 <NavLink to='/settings' style={style}>Settings</NavLink>
             </div>
+            <div> 
+                <NavLink to='/images' style={style}>Images</NavLink>
+            </div>
         </nav>
         );
     

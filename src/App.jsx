@@ -10,6 +10,7 @@ import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import UsersContainer  from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
+import AppImages from './components/Images/AppImages';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
               <Route  path="/modal" element={<Modal />}></Route>
               <Route  path="/quiz" element={<Quiz />}></Route>
               <Route  path="/settings" element={<Settings />}></Route>
+              <Route  path="/images" element={<AppImages />}></Route>
             </Routes>
         </div>
       </div>
