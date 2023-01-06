@@ -27,11 +27,11 @@ import s from './Images.module.css';
         <>
             <ReactPaginate
                 breakLabel="..."
-                nextLabel="next >"
+                nextLabel="сюда >"
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={3}
                 pageCount={pageCount}
-                previousLabel="< previous"
+                previousLabel="< туда"
                 renderOnZeroPageCount={null}
                 containerClassName={s.pagination}
                 pageLinkClassName={s.page_num}
