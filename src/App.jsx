@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import Count from './components/Count/Count';
 import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
@@ -24,7 +24,7 @@ const App = () => {
         <div className="app-wrapper-content">
             <Routes>
               <Route  path="/dialogs/*" element={ <DialogsContainer />}></Route>
-              <Route  path="/profile" element={ <Profile  />}></Route>
+              <Route  path="/profile/*" element={ <ProfileContainer  />}></Route>
               <Route  path="/users" element={<UsersContainer />}></Route>
               <Route  path="/count" element={<Count />}></Route>
               <Route  path="/modal" element={<Modal />}></Route>

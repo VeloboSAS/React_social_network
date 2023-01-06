@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import {followAC, unfollowAC, setUsersAC, setCurrentPageAC, setUsersTotalCountAC, toogleIsFetchingAC} from '../../Redux/usersReducer';
+import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toogleIsFetching} from '../../Redux/usersReducer';
 import axios from 'axios';
 import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
@@ -49,27 +49,34 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) =>{
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) =>{
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) =>{
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber) =>{
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) =>{
-            dispatch(setUsersTotalCountAC(totalCount))
-        },
-        toogleIsFetching: (isFetching) =>{
-            dispatch(toogleIsFetchingAC(isFetching))
-        },
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) =>{
+//             dispatch(followAC(userId))
+//         },
+//         unfollow: (userId) =>{
+//             dispatch(unfollowAC(userId))
+//         },
+//         setUsers: (users) =>{
+//             dispatch(setUsersAC(users))
+//         },
+//         setCurrentPage: (pageNumber) =>{
+//             dispatch(setCurrentPageAC(pageNumber))
+//         },
+//         setTotalUsersCount: (totalCount) =>{
+//             dispatch(setUsersTotalCountAC(totalCount))
+//         },
+//         toogleIsFetching: (isFetching) =>{
+//             dispatch(toogleIsFetchingAC(is
+//         },
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toogleIsFetching,
+})(UsersContainer);
