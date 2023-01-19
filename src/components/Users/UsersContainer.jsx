@@ -9,7 +9,10 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toogleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+                withCredentials: true
+                })
+                .then( response => {
                 this.props.toogleIsFetching(false)
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
@@ -19,7 +22,9 @@ class UsersContainer extends Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toogleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+            withCredentials: true
+            }).then( response => {
             this.props.toogleIsFetching(false)
             this.props.setUsers(response.data.items)
                 })
@@ -49,28 +54,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) =>{
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) =>{
-//             dispatch(unfollowAC(userId))
-//         },
-//         setUsers: (users) =>{
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (pageNumber) =>{
-//             dispatch(setCurrentPageAC(pageNumber))
-//         },
-//         setTotalUsersCount: (totalCount) =>{
-//             dispatch(setUsersTotalCountAC(totalCount))
-//         },
-//         toogleIsFetching: (isFetching) =>{
-//             dispatch(toogleIsFetchingAC(is
-//         },
-//     }
-// }
 
 export default connect(mapStateToProps, {
     follow,
