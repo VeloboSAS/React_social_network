@@ -27,7 +27,6 @@ class UsersContainer extends Component {
                         users={this.props.users}
                         follow={this.props.follow}
                         unfollow={this.props.unfollow}
-                        // toggleFollowingProgress={this.props.toogleFollowingProgress}
                         followingInProgress={this.props.followingInProgress}/> 
                 </>
     }
@@ -42,11 +41,7 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-
-
-    }
-}
-
+    }}
 
 export default connect(mapStateToProps, {
     follow, unfollow, setCurrentPage, toogleFollowingProgress, getUsers,

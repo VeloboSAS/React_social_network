@@ -26,6 +26,14 @@ export const usersAPI = {
         const response = await instance.delete(`follow/${id}`);
         return response.data;
     },
-
+    async getProfile(id) {
+        return await instance.get(`profile/${id}`)
+    }
 }
+
+export const authAPI = {
+    async me() {
+        return await instance.get(`auth/me`)
+    }
+} 
 

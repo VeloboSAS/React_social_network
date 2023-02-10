@@ -2,15 +2,11 @@ import React from "react";
 import s from './Users.module.css';
 import user from '../../images/user.jpg';
 import { NavLink } from "react-router-dom";
-import {usersAPI} from '../../api/api';
-
 
 const Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
         let pages = []
-
         for (let i=1; i <= pagesCount; i++) {
             pages.push(i);
         }
@@ -19,7 +15,6 @@ const Users = (props) => {
         let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
         let curPL = curP + 5;
         let slicedPages = pages.slice( curPF, curPL); 
-
 
     return <div className={s.users}>
                 <div>
