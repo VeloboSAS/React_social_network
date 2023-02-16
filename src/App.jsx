@@ -11,6 +11,7 @@ import Quiz from './components/Quiz/Quiz';
 import UsersContainer  from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
 import AppImages from './components/Images/AppImages';
+import Login from './components/Login/Login';
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
               <Route  path="/profile/:userId" element={ <ProfileContainer  />}></Route>
               <Route  path='/profile/' element={<ProfileContainer />} />
               <Route  path="/users" element={<UsersContainer />}></Route>
+              <Route  path="/login" element={<Login />}></Route>
               <Route  path="/count" element={<Count />}></Route>
               <Route  path="/modal" element={<Modal />}></Route>
               <Route  path="/quiz" element={<Quiz />}></Route>
