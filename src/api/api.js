@@ -27,8 +27,23 @@ export const usersAPI = {
         return response.data;
     },
     async getProfile(id) {
-        return await instance.get(`profile/${id}`)
+        console.warn('Obsolete method. Please profileAPI object')
+        return profileAPI.getProfile(id)
     }
+
+}
+
+export const profileAPI = {
+    async getProfile(id) {
+        return await instance.get(`profile/${id}`);
+    },
+
+    async getStatus(id) {
+        return await instance.get(`profile/status/${id}`);
+    },
+    async updateStatus(status) {
+        return await instance.put(`profile/status/`, { status });
+    },
 }
 
 export const authAPI = {
