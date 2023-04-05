@@ -12,7 +12,8 @@ class ProfileContainer extends Component{
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
-            userId = 2;
+            debugger;
+            userId = this.props.autorizedUserId;
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
@@ -27,6 +28,8 @@ class ProfileContainer extends Component{
 let mapStateToProps = (state) => ({
     profile: state.profilePages.profile,
     status: state.profilePages.status,
+    autorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
 })
 
 export default compose(
