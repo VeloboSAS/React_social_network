@@ -12,8 +12,10 @@ class ProfileContainer extends Component{
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
-            debugger;
             userId = this.props.autorizedUserId;
+            // if (!userId) {
+            //     this.props.history.push('/login');
+            // }
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
