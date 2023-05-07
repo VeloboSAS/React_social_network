@@ -6,8 +6,8 @@ import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from "redux";
-import { getUsers, getPageSize, getTotalUsersCount,
-     getCurrentPage, getIsFetching, getFollowingInProgress  } from "../../Redux/usersSelectors";
+import { getPageSize, getTotalUsersCount,
+     getCurrentPage, getIsFetching, getFollowingInProgress, getUsers  } from "../../Redux/usersSelectors";
 
 
 
