@@ -14,7 +14,7 @@ import AppImages from './components/Images/AppImages';
 import Login from './components/Login/Login';
 import {connect} from 'react-redux';
 import { initializeApp } from './Redux/appReducer';
-import Preloader from './components/Preloader/Preloader';
+import Preloader from './components/common/Preloader/Preloader';
 
 class App extends Component {
   componentDidMount() {

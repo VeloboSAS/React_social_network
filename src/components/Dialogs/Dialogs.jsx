@@ -4,7 +4,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import { Navigate } from "react-router-dom";
 import { Field, reduxForm } from 'redux-form';
-import { Textarea } from "../FormsControls/FormControls";
+import { Textarea } from "../common/FormsControls/FormControls";
 import {required, maxLengthCreator, minLengthCreator} from '../../utils/validators/validators';
 
 const Dialogs = (props) => {

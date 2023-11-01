@@ -1,6 +1,6 @@
 import React from "react";
 import myimg from '../../../images/fon.jpg';
-import Preloader from "../../Preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader";
 import s from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 

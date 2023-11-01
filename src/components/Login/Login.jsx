@@ -1,12 +1,12 @@
 import React from "react";
-import { Field, reduxForm } from 'redux-form';
-import { Input } from "../FormsControls/FormControls";
+import { reduxForm } from 'redux-form';
+import { Input } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator, minLengthCreator  } from "../../utils/validators/validators";
 import { connect } from 'react-redux';
 import { login } from "../../Redux/authReducer";
 import { Navigate }  from 'react-router-dom';
-import s from '../FormsControls/FormControls.module.css';
-import { createField } from "../FormsControls/FormControls";
+import s from '../common/FormsControls/FormControls.module.css';
+import { createField } from "../common/FormsControls/FormControls";
 
 const maxLength20 = maxLengthCreator(20);
 const minLength2 = minLengthCreator(2)
