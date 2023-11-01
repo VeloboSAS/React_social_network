@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Users.module.css';
-import userph from '../../images/user.jpg';
+import userPhoto from '../../images/user.jpg';
 import { NavLink } from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ const User = ({user, followingInProgress, unfollow, follow, index}) => {
                         <span>
                             <div>
                                 <NavLink to={'./../profile/' + user.id}>
-                                    <img src={user.photos.small != null ? user.photos.small : userph} className={s.photoUrl} alt=""/>
+                                    <img src={user.photos.small != null ? user.photos.small : userPhoto} className={s.photoUrl} alt=""/>
                                 </NavLink>
                             </div>
                             <div>

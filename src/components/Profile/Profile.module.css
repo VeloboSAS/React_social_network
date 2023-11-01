@@ -1,8 +1,6 @@
 .content {
   grid-area: c;
   background-color: #51dad0;
-  /* padding: 10px; */
-  /* height: 80vh; */
   height: auto;
 }
 
