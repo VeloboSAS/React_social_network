@@ -6,7 +6,6 @@ import {useParams, useLocation, useNavigate} from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"; 
 import { compose } from 'redux';
 
-
 class ProfileContainer extends Component{
 
     componentDidMount() {
@@ -17,6 +16,7 @@ class ProfileContainer extends Component{
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
     }
+
     render() {
         return (
             <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>

@@ -3,7 +3,6 @@ import s from './Profile.module.css';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-
 const Profile = ({profile, status, updateStatus, store}) => {
 
     return (
@@ -11,8 +10,7 @@ const Profile = ({profile, status, updateStatus, store}) => {
             <ProfileInfo profile={profile} status={status} updateStatus={updateStatus}/>
             <MyPostsContainer store={store} />
         </div>
-        );
-    
+        );   
 }
 
 export default  Profile;

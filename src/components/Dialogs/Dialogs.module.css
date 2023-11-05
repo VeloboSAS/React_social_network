@@ -1,8 +1,9 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 4fr 8fr;
     min-height: 70vh;
     height: auto;
+    margin-left: 50px;
 }
 
 .dialogsItem {
@@ -30,5 +31,10 @@
 
 .addMessages {
     padding-top: 20px;
-}  
+}
+
+.title {
+   text-align: center;
+   color: Indigo;
+}
   

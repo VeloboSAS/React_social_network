@@ -19,9 +19,6 @@ const Settings = lazy(() => import('./components/Settings/Settings'));
 const AppImages = lazy(() => import('./components/Images/AppImages'));
 
 
-
-
-
 class App extends Component {
   componentDidMount() {
     this.props.initializeApp()

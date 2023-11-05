@@ -39,7 +39,7 @@ const MyPosts = React.memo(props => {
 
         return (
             <div>
-                <h3 style={{color: 'purple'}}>My Posts</h3>
+                <h3 className={s.title}>My Posts</h3>
                 <AddNewPostFormRedux onSubmit={onAddPost}/>
                 <div className={s.posts}>
                     { postsElements }
