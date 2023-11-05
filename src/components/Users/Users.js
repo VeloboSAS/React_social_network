@@ -7,8 +7,13 @@ const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  .
 
     return <>
             <div className={s.wrapper}>
-                <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-                            totalUsersCount={totalUsersCount} pageSize={pageSize}  />
+                <div className={s.users}>
+                    <h3 style={{color: "purple"}}>Users</h3>
+                </div>
+                <div>
+                    <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
+                                totalItemsCount={totalUsersCount} pageSize={pageSize}  />
+                </div>
                 <div>
                     { 
                     users.map( (u, index) => <User user={u} followingInProgress={props.followingInProgress}

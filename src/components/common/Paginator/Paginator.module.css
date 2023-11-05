@@ -1,8 +1,3 @@
-.users {
-    min-height: 80vh;
-    height: auto;
-}
-
 .pagination{
     list-style: none;
     display: flex;
@@ -18,8 +13,8 @@
     padding: 8px 15px;
     cursor: pointer;
     border-radius: 3px;
-    font-weight: 400;
-  }
+    font-weight: 600;
+}
 
   .pagination .page_num{
     padding: 8px 15px;
@@ -31,4 +26,39 @@
   .pagination .page_num:hover{
     background-color: #5AB1BB;
     color:#fff;
+  }
+
+  .pageNumber {
+    color:purple;
+    font-size: 0.8em
+  }
+
+  .btn {
+    display: inline-block;	
+    box-sizing: border-box;
+    padding: 0 20px;
+    margin: 15px 15px 15px 15px;
+    outline: none;
+    border: none;  
+    border-radius: 6px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    color: purple;
+    background-color: #5AB1BB;;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+  }
+  .btn:focus-visible {
+    box-shadow: 0 0 0 2px #666;
+  }
+  .btn:hover {
+    background-color: #DBE7F2;
+  }
+  .btn:active {
+    transform: scale(0.96);
   }

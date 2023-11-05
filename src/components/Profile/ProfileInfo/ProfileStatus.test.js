@@ -18,11 +18,12 @@ describe("ProfileStatus Component", () => {
       expect(span).not.toBeNull();
       });
 
-    test("after creation <inpit>  shouldn't be displayed",async() => {
+    test("after creation <inpit>  shouldn't be displayed",() => {
       const component = create(<ProfileStatus status="it-kamasutra.com" />);
       const root = component.root;
       expect(() => {
-           await root.findByType("input");
+            // eslint-disable-next-line testing-library/await-async-query
+            root.findByType("input");
       }).toThrow();
       });
 
