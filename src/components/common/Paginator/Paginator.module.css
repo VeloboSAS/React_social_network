@@ -29,7 +29,7 @@
   }
 
   .pageNumber {
-    color:purple;
+    color:Indigo;
     font-size: 0.8em
   }
 
@@ -46,7 +46,7 @@
     font-size: 17px;
     font-weight: 600;
     text-decoration: none;
-    color: purple;
+    color: Indigo;
     background-color: #5AB1BB;;
     cursor: pointer;
     user-select: none;

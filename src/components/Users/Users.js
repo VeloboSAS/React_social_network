@@ -8,7 +8,7 @@ const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  .
     return <>
             <div className={s.wrapper}>
                 <div className={s.users}>
-                    <h3 style={{color: "purple"}}>Users</h3>
+                    <h3 >Users</h3>
                 </div>
                 <div>
                     <Paginator currentPage={currentPage} onPageChanged={onPageChanged}

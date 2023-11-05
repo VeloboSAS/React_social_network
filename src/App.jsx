@@ -1,22 +1,26 @@
-import React, {Component} from 'react';
+import React, {Component, lazy, Suspense} from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import Count from './components/Count/Count';
-import Modal from './components/Modal/Modal';
-import Quiz from './components/Quiz/Quiz';
-import UsersContainer  from './components/Users/UsersContainer';
-import Settings from './components/Settings/Settings';
-import AppImages from './components/Images/AppImages';
 import Login from './components/Login/Login';
 import {connect} from 'react-redux';
 import { initializeApp } from './Redux/appReducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
 import store from './Redux/redux-store';
+const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
+const Count = lazy(() => import('./components/Count/Count'));
+const Modal = lazy(() => import('./components/Modal/Modal'));
+const Quiz = lazy(() => import('./components/Quiz/Quiz'));
+const Settings = lazy(() => import('./components/Settings/Settings'));
+const AppImages = lazy(() => import('./components/Images/AppImages'));
+
+
+
+
 
 class App extends Component {
   componentDidMount() {
@@ -31,6 +35,7 @@ class App extends Component {
           <HeaderContainer />
           <Navbar />
           <div className="app-wrapper-content">
+            <Suspense fallback={<div><Preloader/></div>}>
               <Routes>
                 <Route  path="/dialogs/*" element={ <DialogsContainer />}></Route>
                 <Route  path="/profile/:userId" element={ <ProfileContainer  />}></Route>
@@ -43,6 +48,7 @@ class App extends Component {
                 <Route  path="/settings" element={<Settings />}></Route>
                 <Route  path="/images" element={<AppImages />}></Route>
               </Routes>
+            </Suspense>
           </div>
         </div>
   );
