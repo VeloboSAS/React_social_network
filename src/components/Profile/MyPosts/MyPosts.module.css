@@ -1,5 +1,31 @@
-.button {
-  margin: 10px 10px 10px 0;
+.btn {
+  display: inline-block;	
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 15px 15px 15px 15px;
+  outline: none;
+  border: none;  
+  border-radius: 6px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  color: Indigo;
+  background-color: #5AB1BB;;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px #666;
+}
+.btn:hover {
+  background-color: #DBE7F2;
+}
+.btn:active {
+  transform: scale(0.96);
 }
 
 .title {

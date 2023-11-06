@@ -22,7 +22,7 @@ const LoginForm = ({handleSubmit, error}) => {
                         {error}
                         </div> }
                 <div>
-                    <button>Login</button>
+                    <button className={s.btn}>Login</button>
                 </div>
             </form>
     );  

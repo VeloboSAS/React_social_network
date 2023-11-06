@@ -9,6 +9,7 @@ import { initializeApp } from './Redux/appReducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
 import store from './Redux/redux-store';
+import Page404 from './components/Page404/Page404';
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
@@ -44,6 +45,7 @@ class App extends Component {
                 <Route  path="/quiz" element={<Quiz />}></Route>
                 <Route  path="/settings" element={<Settings />}></Route>
                 <Route  path="/images" element={<AppImages />}></Route>
+                <Route path="*" element={<Page404 />}/>
               </Routes>
             </Suspense>
           </div>
