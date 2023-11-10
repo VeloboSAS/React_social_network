@@ -30,9 +30,6 @@ const Navbar = () => {
                 <NavLink to='/modal' style={style}>Modal</NavLink>
             </div>
             <div> 
-                <NavLink to='/quiz' style={style}>Quiz</NavLink>
-            </div>
-            <div> 
                 <NavLink to='/settings' style={style}>Settings</NavLink>
             </div>
             <div> 

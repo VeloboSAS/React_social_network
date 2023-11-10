@@ -2,7 +2,7 @@
   display: inline-block;	
   box-sizing: border-box;
   padding: 0 20px;
-  margin: 15px 15px 15px 15px;
+  margin: 5px 15px 15px 0;
   outline: none;
   border: none;  
   border-radius: 6px;
@@ -29,6 +29,12 @@
 }
 
 .title {
+  margin: 10px 30px 20px 10px;
   text-align: center;
   color: Indigo;
+}
+
+.addPost {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
 }

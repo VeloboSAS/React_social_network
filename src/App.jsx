@@ -15,7 +15,6 @@ const ProfileContainer = lazy(() => import('./components/Profile/ProfileContaine
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const Count = lazy(() => import('./components/Count/Count'));
 const Modal = lazy(() => import('./components/Modal/Modal'));
-const Quiz = lazy(() => import('./components/Quiz/Quiz'));
 const Settings = lazy(() => import('./components/Settings/Settings'));
 const AppImages = lazy(() => import('./components/Images/AppImages'));
 
@@ -42,7 +41,6 @@ class App extends Component {
                 <Route  path="/login" element={<Login />}></Route>
                 <Route  path="/count" element={<Count />}></Route>
                 <Route  path="/modal" element={<Modal />}></Route>
-                <Route  path="/quiz" element={<Quiz />}></Route>
                 <Route  path="/settings" element={<Settings />}></Route>
                 <Route  path="/images" element={<AppImages />}></Route>
                 <Route path="*" element={<Page404 />}/>

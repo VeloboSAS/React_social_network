@@ -95,31 +95,17 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         if (response.data.data.resultCode === 0) {
             dispatch(getUserProfile(userId));
         } else {
-                // const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                // const error1 = () => {
-                //     const errorObj = {}
-                //     const arrayStrings = response.data.messages[0].split("(")[1].replace(")","").toLowerCase().split("->");
-                //     const key1 = arrayStrings[0];
-                //     const key2 = arrayStrings[1];
-                //     errorObj[key1] = {};
-                //     errorObj[key1][key2] = message
-                //     return  errorObj
-                // }
                 let wrongNetwork = response.data.messages[0]
-                .slice(
-                  response.data.messages[0].indexOf(">") + 1,
-                  response.data.messages[0].indexOf(")")
-                )
-                .toLocaleLowerCase();
-                dispatch(
-                    stopSubmit("edit-profile", {
+                    .slice(
+                    response.data.messages[0].indexOf(">") + 1,
+                    response.data.messages[0].indexOf(")")
+                    )
+                    .toLocaleLowerCase();
+                dispatch(stopSubmit("edit-profile", {
                       contacts: { [wrongNetwork]: response.data.messages[0] }
                     })
                   );
                   return Promise.reject(response.data.messages[0]);
-                // dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}))
-                // return Promise.reject(response.data.messages[0])
-
         }
     
     };         

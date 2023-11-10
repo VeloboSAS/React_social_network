@@ -1,7 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 4fr 8fr;
-    min-height: 70vh;
+    min-height: 100vh;
     height: auto;
     margin-left: 50px;
 }

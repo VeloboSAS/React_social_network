@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import myimg from '../../../images/fon.jpg';
+// import myimg from '../../../images/fon.jpg';
 import Preloader from "../../common/Preloader/Preloader";
 import s from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
@@ -28,17 +28,24 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, savePro
     }
     return (
         <>
-            <div className={s.img}>
-                <img src={myimg} alt=""/>
-            </div>
             <div className={s.descriptionBlock}>
-                <img src={profile.photos.large != null ? profile.photos.large : userPhoto} className={s.photo} alt={profile.fullName} />
-                {isOwner && <input className={s.input} type={"file"} onChange={onMainPhotoSelected}/>}
-
+                <div className={s.PhotoBlock}>
+                    <img src={profile.photos.large != null ? profile.photos.large : userPhoto} className={s.photo} alt={profile.fullName} />
+                    { isOwner && 
+                    <label className={s.inputFile}>
+                        <input className={s.input} type={"file"} onChange={onMainPhotoSelected}/>		
+                        <span>Выберите файл</span>
+                    </label>
+}
+                </div>
+                <div>
                 { editMode ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
                  :<ProfileData goToEditMode={() => {setEditMode(true)}} profile={profile} isOwner={isOwner}/>}
+                </div>
+                <div className={s.status}>
+                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                </div>
 
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
         </>
         );   
@@ -46,7 +53,9 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, savePro
 
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return <div>
-                {isOwner && <div><button onClick={goToEditMode} className={s.btn}>edit</button></div>}
+                <div>
+                    {isOwner && <div><button onClick={goToEditMode} className={s.btn}>Редактировать</button></div>}
+                </div>
                 <div>
                     <b>Full name</b>: {profile.fullName}
                 </div>
@@ -61,6 +70,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
                 <div>
                     <b>About me</b>: {profile.aboutMe}
                 </div>
+                <div></div>
                 <div>
                     <b>Contacts</b>: {Object.keys(profile.contacts).map(key =>{
                         return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
