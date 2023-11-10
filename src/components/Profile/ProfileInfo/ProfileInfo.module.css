@@ -2,6 +2,7 @@
 .descriptionBlock .photo {
   width: 70px;
   height: 70px;
+  margin-top: 10px;
 }
 .descriptionBlock .input {
   padding: 1em
