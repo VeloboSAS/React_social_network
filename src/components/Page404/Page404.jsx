@@ -5,12 +5,10 @@ import {Link} from "react-router-dom";
 
 
 const Page404 = () => {
-      <div className={s.blockWrapper}>
-        <img src={notFound} alt="not found" className={s.image}/>
+  return <div className={s.blockWrapper}>
+        {/* <img src={notFound} alt="not found" className={s.image}/> */}
         <h1 className={s.title}>Page is not found</h1>
         <Link to={'/'} className={s.mainpageLink}>Go to main page</Link>
-      </div>
-  
+      </div> 
 }
-
 export default Page404;
