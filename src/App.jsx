@@ -19,9 +19,21 @@ const AppImages = lazy(() => import('./components/Images/AppImages'));
 
 
 class App extends Component {
+
+  catchAllUnhandleErrors = (reason, promise) => {
+    alert("Some error occured");
+  }
+
   componentDidMount() {
     this.props.initializeApp()
-}
+    window.addEventListener("unhandledrejection", this.catchAllUnhandleErrors) 
+    }
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandleErrors) 
+  }  
+
+
   render() {
     if (!this.props.initialized) {
       return <Preloader/>

@@ -42,6 +42,7 @@ export const profileAPI = {
         return await instance.get(`profile/status/${id}`);
     },
     async updateStatus(status) {
+        
         return await instance.put(`profile/status/`, { status });
     },
     async savePhoto(photoFile) {

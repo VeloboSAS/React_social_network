@@ -6,7 +6,8 @@ import {Link} from "react-router-dom";
 
 const Page404 = () => {
   return <div className={s.blockWrapper}>
-        {/* <img src={notFound} alt="not found" className={s.image}/> */}
+        <img src={notFound} alt="not found" className={s.image}/>
+        <div className={s.over}></div>
         <h1 className={s.title}>Page is not found</h1>
         <Link to={'/'} className={s.mainpageLink}>Go to main page</Link>
       </div> 
