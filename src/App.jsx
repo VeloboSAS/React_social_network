@@ -1,6 +1,6 @@
 import React, {Component, lazy, Suspense} from 'react';
 import './App.css';
-import {BrowserRouter, Route, Routes, Navigate, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
@@ -20,9 +20,9 @@ const AppImages = lazy(() => import('./components/Images/AppImages'));
 
 class App extends Component {
 
-  catchAllUnhandleErrors = (reason, promise) => {
-    alert("Some error occured");
-  }
+  // catchAllUnhandleErrors = (reason, promise) => {
+  //   alert("Some error occured");
+  // }
 
   componentDidMount() {
     this.props.initializeApp()
