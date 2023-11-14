@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import {follow, unfollow, setCurrentPage,
-      toogleFollowingProgress, requestUsers} from '../../Redux/usersReducer';
+      toogleFollowingProgress, requestUsers} from '../../Redux/usersReducer.tsx';
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';

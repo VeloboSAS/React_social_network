@@ -1,4 +1,4 @@
-import {sendMessageCreator} from '../../Redux/dialogsReducer';
+import {sendMessageCreator} from '../../Redux/dialogsReducer.tsx';
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"; 
