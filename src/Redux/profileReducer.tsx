@@ -17,7 +17,7 @@ let initialState = {
     status: ''
 };
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: any) => {
     switch(action.type) {
         case ADD_POST: {
             let newPost = {
@@ -53,8 +53,7 @@ const profileReducer = (state = initialState, action) => {
             };
         }
         default:  return state;     
-    }
-}
+    }};
 
 export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
 
@@ -73,9 +72,7 @@ export const getUserProfile = (userId) => async (dispatch) => {
         dispatch(setUserProfile(response.data));
         } catch(error) {
             console.warn("user is not defined")
-        }
-    }
-
+        }};
 
 export const getStatus = (userId) => async (dispatch) => {
     try {
@@ -83,8 +80,7 @@ export const getStatus = (userId) => async (dispatch) => {
         dispatch(setStatus(response.data));
         } catch(error) {
             console.warn("status is not returned in request")
-        }
-    }
+        }} ;
 
 
 export const updateStatus = (status) => async (dispatch) => {
@@ -94,9 +90,7 @@ export const updateStatus = (status) => async (dispatch) => {
             dispatch(setStatus(status));
         }} catch(error) {
             console.warn("status is not updated")
-        }
-    }
-;
+        }};
 
 export const savePhoto = (file) => async (dispatch) => {
     const response = await profileAPI.savePhoto(file)
@@ -121,10 +115,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
                     })
                   );
                   return Promise.reject(response.data.messages[0]);
-        }
-    
-    };         
- 
-
+        }};         
     
 export default profileReducer;

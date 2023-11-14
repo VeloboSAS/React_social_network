@@ -5,7 +5,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Page404 from './components/Page404/Page404';import {connect} from 'react-redux';
-import { initializeApp } from './Redux/appReducer';
+import { initializeApp } from './Redux/appReducer.tsx';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
 import store from './Redux/redux-store';
