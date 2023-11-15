@@ -8,10 +8,10 @@ import Page404 from './components/Page404/Page404';import {connect} from 'react-
 import { initializeApp } from './Redux/appReducer.tsx';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
-import store from './Redux/redux-store';
+import store from './Redux/redux-store.tsx';
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
-const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer.tsx'));
 const Count = lazy(() => import('./components/Count/Count'));
 const Modal = lazy(() => import('./components/Modal/Modal'));
 const Settings = lazy(() => import('./components/Settings/Settings'));

@@ -2,21 +2,35 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import {follow, unfollow, setCurrentPage,
       toogleFollowingProgress, requestUsers} from '../../Redux/usersReducer.tsx';
-import Users from "./Users";
+import Users from "./Users.tsx";
 import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from "redux";
 import { getPageSize, getTotalUsersCount,
      getCurrentPage, getIsFetching, getFollowingInProgress, getUsers  } from "../../Redux/usersSelectors";
+import { UsersType } from "../../Types/types";
+import { AppStateType } from "../../Redux/redux-store";
 
-class UsersContainer extends Component {
+type PropsType = {
+    currentPage: number
+    pageSize: number
+    requestUsers: (currentPage: number, pageSize: number) => void
+    isFetching: boolean
+    totalUsersCount: number
+    users: Array<UsersType>
+    follow: () => void
+    unfollow: () => void
+    followingInProgress: Array<number>
+}     
+
+class UsersContainer extends Component<PropsType> {
 
     componentDidMount() {
         const {currentPage, pageSize} = this.props;
         this.props.requestUsers(currentPage, pageSize);
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber: number) => {
         const {pageSize} = this.props;
         this.props.requestUsers(pageNumber, pageSize)
 
@@ -36,7 +50,7 @@ class UsersContainer extends Component {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -46,8 +60,8 @@ let mapStateToProps = (state) => {
         followingInProgress: getFollowingInProgress(state),
 }}
  
-export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toogleFollowingProgress, requestUsers}),
+export default compose<PropsType>(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toogleFollowingProgress, requestUsers: requestUsers}),
     withAuthRedirect,
 )(UsersContainer)
 

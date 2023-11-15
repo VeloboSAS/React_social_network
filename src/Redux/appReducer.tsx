@@ -1,4 +1,4 @@
-import  {getAuthUserData}  from './authReducer.tsx';
+import { getAuthUserData } from "./authReducer.tsx"
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 

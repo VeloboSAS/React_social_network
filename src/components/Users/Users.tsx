@@ -1,9 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
 import s from './Users.module.css';
-import Paginator from '../common/Paginator/Paginator';
+import Paginator from '../common/Paginator/Paginator.tsx';
 import User from "./User";
+import { UsersType } from "../../Types/types";
 
-const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  ...props}) => {
+type PropsType = {
+    currentPage: number,
+    onPageChanged: (pageNumber: number) => void,
+    totalUsersCount: number,
+    pageSize: number,
+    users: Array<UsersType>,
+    followingInProgress: Array<number>,
+    unfollow: () => void,
+    follow: () => void,
+}
+
+const Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  ...props}) => {
 
     return <>
             <div className={s.wrapper}>
@@ -18,7 +30,7 @@ const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  .
                     { 
                     users.map( (u, index) => <User user={u} followingInProgress={props.followingInProgress}
                                                     unfollow={props.unfollow} follow={props.follow}
-                                                    key={index} className={s.content}/>
+                                                    key={u.id}/>
                     )}
                 </div>
             </div>
