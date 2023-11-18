@@ -1,11 +1,11 @@
 export type PostsType = {
-    id: number,
-    message: string,
+    id: number
+    message: string
     likesCount: number
 }
 
 export type ContactsType = {
-    github: string,
+    github: string
     vk: string
     facebook: string
     instagram: string
@@ -21,18 +21,18 @@ export type PhotosType = {
 }
 
 export type ProfileType = {
-    userId: number,
-    lookingForAJob: boolean,
-    lookingForAJobDescription: string,
-    fullName: string,
-    contacts: ContactsType,
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: ContactsType
     photos: PhotosType
 }
 
 export type UsersType = {
-    id: number,
-    name: string,
-    status: string,
-    photos: PhotosType,
-    followed: boolean,
+    id: number
+    name: string
+    status: string
+    photos: PhotosType
+    followed: boolean
 }

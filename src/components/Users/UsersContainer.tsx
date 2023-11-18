@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import {follow, unfollow, setCurrentPage,
-      toogleFollowingProgress, requestUsers} from '../../Redux/usersReducer.tsx';
-import Users from "./Users.tsx";
+import {follow, unfollow, requestUsers} from '../../Redux/usersReducer';
+import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from "redux";
@@ -11,17 +10,27 @@ import { getPageSize, getTotalUsersCount,
 import { UsersType } from "../../Types/types";
 import { AppStateType } from "../../Redux/redux-store";
 
-type PropsType = {
+type MapStatePropsType = {
     currentPage: number
     pageSize: number
-    requestUsers: (currentPage: number, pageSize: number) => void
     isFetching: boolean
     totalUsersCount: number
     users: Array<UsersType>
-    follow: () => void
-    unfollow: () => void
     followingInProgress: Array<number>
-}     
+}
+
+type MapDispatchPropsType = {
+    requestUsers: (currentPage: number, pageSize: number) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+
+}
+
+type OwnPropsType = {
+    pageTitle: string
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType 
 
 class UsersContainer extends Component<PropsType> {
 
@@ -37,6 +46,7 @@ class UsersContainer extends Component<PropsType> {
     }
     render() {
         return <>
+                <h2 style={{textAlign:'center'}}>{this.props.pageTitle}</h2>
                 <Preloader isFetching={this.props.isFetching}/>
                  <Users totalUsersCount={this.props.totalUsersCount}
                         pageSize={this.props.pageSize}
@@ -50,7 +60,7 @@ class UsersContainer extends Component<PropsType> {
     }
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType  => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -61,7 +71,9 @@ let mapStateToProps = (state: AppStateType) => {
 }}
  
 export default compose<PropsType>(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toogleFollowingProgress, requestUsers: requestUsers}),
-    withAuthRedirect,
+    //TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState
+    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>
+    (mapStateToProps, {follow, unfollow, requestUsers: requestUsers}),
+    withAuthRedirect, 
 )(UsersContainer)
 

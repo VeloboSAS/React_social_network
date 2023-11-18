@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import s from './Users.module.css';
-import Paginator from '../common/Paginator/Paginator.tsx';
-import User from "./User";
+import Paginator from '../common/Paginator/Paginator';
+import User from "./User.";
 import { UsersType } from "../../Types/types";
 
 type PropsType = {
@@ -11,8 +11,8 @@ type PropsType = {
     pageSize: number,
     users: Array<UsersType>,
     followingInProgress: Array<number>,
-    unfollow: () => void,
-    follow: () => void,
+    unfollow: (userId: number) => void,
+    follow: (userId: number) => void,
 }
 
 const Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users,  ...props}) => {
@@ -28,7 +28,7 @@ const Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, page
                 </div>
                 <div>
                     { 
-                    users.map( (u, index) => <User user={u} followingInProgress={props.followingInProgress}
+                    users.map(u => <User user={u} followingInProgress={props.followingInProgress}
                                                     unfollow={props.unfollow} follow={props.follow}
                                                     key={u.id}/>
                     )}
