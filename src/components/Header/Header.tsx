@@ -1,9 +1,15 @@
-import React from "react";
-import logo from '../../images/logo192.png';
-import s from './Header.module.css';
-import {NavLink} from 'react-router-dom';
+import React, {FC} from "react"
+import logo from '../../images/logo192.png'
+import s from './Header.module.css'
+import {NavLink} from 'react-router-dom'
 
-const Header = (props) => {
+type PropsType = {
+    isAuth: boolean
+    login: string | null
+    logout: () => void
+}
+
+const Header: FC<PropsType> = (props) => {
     return (
         <header className={s.header}>
             <img src={logo} alt='logo'/>

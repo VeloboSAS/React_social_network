@@ -1,15 +1,6 @@
+import { DialogType, MessagesType } from "../Types/types"
+
 const SEND_MESSAGE = "SEND-MESSAGE"
-
-type DialogType = {
-    id: number,
-    name: string,
-    img: string
-}
-
-type MessagesType = {
-    id: number,
-    message: string
-}
 
 let initialState = {
     dialogs: [
@@ -29,7 +20,6 @@ let initialState = {
 export type InitialStateType = typeof initialState
 
 const dialogsReducer = (state = initialState, action: any): InitialStateType => {
-
 
     switch (action.type) {
         case  SEND_MESSAGE:

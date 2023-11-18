@@ -1,10 +1,40 @@
-import React, {Component} from "react";
-import Profile from "./Profile";
-import { connect } from "react-redux";
-import {getUserProfile, getStatus, updateStatus,savePhoto, saveProfile} from '../../Redux/profileReducer.tsx';
-import {useParams, useLocation, useNavigate} from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect"; 
-import { compose } from 'redux';
+import React, {Component} from "react"
+import Profile from "./Profile"
+import { connect } from "react-redux"
+import {getUserProfile, getStatus, updateStatus,savePhoto, saveProfile} from '../../Redux/profileReducer'
+import {useParams, useLocation, useNavigate} from "react-router-dom"
+import { withAuthRedirect } from "../../hoc/withAuthRedirect" 
+import { compose } from 'redux'
+// import { AppStateType } from "../../Redux/redux-store"
+// import { ProfileType } from "../../Types/types"
+
+// type MapStatePropsType = {
+//     // currentPage: number
+//     // pageSize: number
+//     // isFetching: boolean
+//     // totalUsersCount: number
+//     // users: Array<UsersType>
+//     // followingInProgress: Array<number>
+//     profile: Array<ProfileType>
+//     status: string
+//     autorizedUserId: any
+//     isAuth: boolean
+
+// }
+
+// type MapDispatchPropsType = {
+//     // requestUsers: (currentPage: number, pageSize: number) => void
+//     // follow: (userId: number) => void
+//     // unfollow: (userId: number) => void
+//     getUserProfile: () => void
+
+// }
+
+// type OwnPropsType = {
+//     pageTitle: string
+// }
+
+// type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType 
 
 class ProfileContainer extends Component{
 

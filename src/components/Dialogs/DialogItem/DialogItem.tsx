@@ -1,11 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 import Ava from '../Ava/Ava';
 import s from '../Dialogs.module.css';
 
-const DialogItem = (props) => {
+type Propstype = {
+    id: number
+    img: string
+    name: string
+}
+
+const DialogItem: FC<Propstype> = (props) => {
     let path = "/dialogs/" + props.id;
 
+    //@ts-ignore
     const style = ({ isActive }) => ({
         fontWeight: isActive ? 'bold' : 'normal',
         color: isActive ? 'blue' : 'blueviolet',
