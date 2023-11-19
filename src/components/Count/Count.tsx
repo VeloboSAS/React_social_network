@@ -1,16 +1,19 @@
-import React, {useState} from "react";
-import s from './Count.module.scss';
+import React, {useState, FC} from "react"
+import s from './Count.module.scss'
 
-const News = (props) => {
+type PropsType = {
+}
+
+const News: FC<PropsType>  = (props) => {
     const [count, setCount] = useState(0)
 
     const onClickPlus = () => {
         setCount(count + 1)
-    };
+    }
 
     const onClickMinus = () => {
         setCount(count - 1)
-    };
+    }
 
     return (
         <div className={s.App}>
@@ -21,8 +24,6 @@ const News = (props) => {
             <button onClick={onClickPlus} className={s.plus}>Плюс +</button>
           </div>
         </div>
-      );
-    
-}
+      )}
 
 export default News;

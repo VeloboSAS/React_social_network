@@ -1,14 +1,14 @@
-import React from "react";
-import { reduxForm } from 'redux-form';
-import { Input } from "../common/FormsControls/FormControls";
-import { required, maxLengthCreator, minLengthCreator  } from "../../utils/validators/validators";
-import { connect } from 'react-redux';
-import { login } from "../../Redux/authReducer.tsx";
-import { Navigate }  from 'react-router-dom';
-import s from '../common/FormsControls/FormControls.module.css';
-import { createField } from "../common/FormsControls/FormControls";
+import React from "react"
+import { reduxForm } from 'redux-form'
+import { Input } from "../common/FormsControls/FormControls"
+import { required, maxLengthCreator, minLengthCreator  } from "../../utils/validators/validators"
+import { connect } from 'react-redux'
+import { login } from "../../Redux/authReducer"
+import { Navigate }  from 'react-router-dom'
+import s from '../common/FormsControls/FormControls.module.css'
+import { createField } from "../common/FormsControls/FormControls"
 
-const maxLength20 = maxLengthCreator(20);
+const maxLength20 = maxLengthCreator(20)
 const minLength2 = minLengthCreator(2)
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
@@ -34,18 +34,19 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
 
 const LoginReduxForm = reduxForm({form: 'Login'})(LoginForm)
 
-const Login = (props) => {
+
+const Login = ({login, isAuth, captchaUrl}) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate replace to="/profile"/>
     }
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>
     );  
 }

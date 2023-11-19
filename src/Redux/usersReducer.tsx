@@ -3,7 +3,7 @@ import { usersAPI } from "../api/api"
 import { UsersType } from "../Types/types"
 import { updateObjectInArray } from "../utils/objects-helpers"
 import { AppStateType } from "./redux-store"
-import { Dispatch } from "redux";
+import { Dispatch } from "redux"
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -118,7 +118,6 @@ export const toogleFollowingProgress = (isFetching: boolean, userId: number): To
 
 
  // Thunk   
-
 // type GetStateType = () => AppStateType
 type DispatchType = Dispatch <ActionsType>
 type ThunkType =  ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>

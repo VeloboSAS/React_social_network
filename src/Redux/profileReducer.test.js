@@ -1,7 +1,4 @@
-import profileReducer, {addPostActionCreator, deletePost} from "./profileReducer";
-// import  ReactDOM  from "react-dom";
-// import App from "../App";
-// import React from "react";
+import profileReducer, {addPostActionCreator, deletePost} from "./profileReducer"
 
 let state = {
     posts:  [
@@ -11,7 +8,7 @@ let state = {
         { id: 4, message: "Oupsss", likesCount: 12},
       ],
 
-};
+}
 
 test('lengt of posts should be incremented', () => {
     //1.start data
@@ -23,7 +20,7 @@ test('lengt of posts should be incremented', () => {
     //3.expettation
     expect(newState.posts.length).toBe(5);
 
-  });
+  })
 
   test('message of new post should be correct', () => {
     //1.start data
@@ -35,7 +32,7 @@ test('lengt of posts should be incremented', () => {
     //3.expettation
 
     expect(newState.posts[4].message).toBe("it-kamasutra.com");
-  });
+  })
 
   test('after deliting length of messages should be decrement', () => {
     //1.start data
@@ -47,7 +44,7 @@ test('lengt of posts should be incremented', () => {
     //3.expettation
     expect(newState.posts.length).toBe(3);
 
-  });
+  })
 
   test(`after deliting length  shouldn't  be decrement if id is incorrect`, () => {
     //1.start data
@@ -59,4 +56,4 @@ test('lengt of posts should be incremented', () => {
     //3.expettation
     expect(newState.posts.length).toBe(4);
 
-  });
+  })
