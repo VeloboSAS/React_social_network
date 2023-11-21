@@ -1,4 +1,4 @@
-import { authAPI, securityAPI } from "../api/api"
+import { authAPI, ResultCodesEnum, ResultCodesForCaptcha, securityAPI } from "../api/api"
 import { stopSubmit } from "redux-form"
 import { AppStateType } from "./redux-store"
 import { ThunkAction } from "redux-thunk"
@@ -55,23 +55,23 @@ type ThunkType =  ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
 export const getAuthUserData = (): ThunkType =>  async (dispatch, getState) => {
 
-    const response = await authAPI.me()
-        if (response.data.resultCode === 0) {
-            let {id, email, login} = response.data.data
+    const meData = await authAPI.me()
+        if (meData.resultCode === ResultCodesEnum.Success) {
+            let {id, email, login} = meData.data
             dispatch(setAuthUserData(id, email, login, true));
         }
     };
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: any): ThunkType => async (dispatch: any) => {
-    let response = await authAPI.login(email, password, rememberMe, captcha)
-        if (response.data.resultCode === 0) {
+    const loginData = await authAPI.login(email, password, rememberMe, captcha)
+        if (loginData.resultCode === ResultCodesEnum.Success) {
             //success, get auth data
             dispatch(getAuthUserData());
         } else {
-            if (response.data.resultCode === 10 ){
+            if (loginData.resultCode === ResultCodesForCaptcha.CaptrchaIsRequired ){
                 dispatch(getCaptchaUrl())
             }
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some Error"
+            let message = loginData.messages.length > 0 ? loginData.messages[0] : "Some Error"
             dispatch(stopSubmit("Login", {_error: message}))
         }
     };
@@ -85,7 +85,7 @@ export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
 
 export const logout = (): ThunkType =>  async (dispatch) => {
     const response = await authAPI.logout()
-        if (response.data.resultCode === 0) {
+        if (response.data.resultCode === ResultCodesEnum.Success) {
             dispatch(setAuthUserData(null, null, null, false));
         }
     };  

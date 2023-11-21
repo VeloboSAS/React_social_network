@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { login } from "../../Redux/authReducer"
 import { Navigate }  from 'react-router-dom'
 import s from '../common/FormsControls/FormControls.module.css'
+import sl from './Login.module.css'
+import buttonStyle from '../../App.module.css'
 import { createField } from "../common/FormsControls/FormControls"
 
 const maxLength20 = maxLengthCreator(20)
@@ -13,20 +15,26 @@ const minLength2 = minLengthCreator(2)
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
+                    <div className={sl.loginForm}>
+                        <div>
+                            {createField("Email", "email", [required, maxLength20, minLength2], Input)}
+                        </div>
+                        <div>
+                            {createField("Password", "password", [required, maxLength20, minLength2], Input, {type: "password"})}
+                        </div>    
+                        <div>
+                            {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me" )}
+                        </div>
 
-                    {createField("Email", "email", [required, maxLength20, minLength2], Input)}
-                    {createField("Password", "password", [required, maxLength20, minLength2], Input, {type: "password"})}    
-                    {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me" )}
-
-                    {captchaUrl && <img src={captchaUrl} alt=''/>} 
-                    {captchaUrl && createField("Symbols from image", "captcha", [required], Input, {} )}
-
+                        {captchaUrl && <img src={captchaUrl} alt=''/>} 
+                        {captchaUrl && createField("Symbols from image", "captcha", [required], Input, {} )}
+                    </div>
                     { error && <div className={s.formSummaryError}>
                         {error}
                         </div> }
                 <div>
-                    <button className={s.btn}>Login</button>
+                    <button className={buttonStyle.btn}>Login</button>
                 </div>
             </form>
     );  
@@ -44,7 +52,7 @@ const Login = ({login, isAuth, captchaUrl}) => {
         return <Navigate replace to="/profile"/>
     }
     return (
-        <div>
+        <div className={sl.loginBlock}>
             <h1>LOGIN</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>

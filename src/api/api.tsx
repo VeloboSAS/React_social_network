@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ProfileType } from '../Types/types';
 
 const instance = axios.create({
     withCredentials: true,
@@ -13,20 +14,20 @@ export const usersAPI = {
         const response = await instance.get(`users?page=${currentPage}&count=${pageSize}`);
         return response.data;
     },
-    async getPage(pageNumber, pageSize=10) {
+    async getPage(pageNumber: number, pageSize=10) {
         const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
         return response.data;
     },
 
-    async follow(id) {
+    async follow(id: number) {
         const response = await instance.post(`follow/${id}`, {});
         return response.data;
     },
-    async unfollow(id) {
+    async unfollow(id: number) {
         const response = await instance.delete(`follow/${id}`);
         return response.data;
     },
-    async getProfile(id) {
+    async getProfile(id: number) {
         console.warn('Obsolete method. Please profileAPI object')
         return profileAPI.getProfile(id)
     }
@@ -34,18 +35,18 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    async getProfile(id) {
+    async getProfile(id: number) {
         return await instance.get(`profile/${id}`);
     },
 
-    async getStatus(id) {
+    async getStatus(id: number) {
         return await instance.get(`profile/status/${id}`);
     },
-    async updateStatus(status) {
+    async updateStatus(status: string) {
         
         return await instance.put(`profile/status/`, { status });
     },
-    async savePhoto(photoFile) {
+    async savePhoto(photoFile: any) {
         const formData = new FormData();
         formData.append("image", photoFile)
         return await instance.put(`profile/photo`, formData, {
@@ -54,17 +55,40 @@ export const profileAPI = {
             }
         });
     },
-    async saveProfile(profile) {
+    async saveProfile(profile: ProfileType) {
         return await instance.put(`profile`, profile);
     },
 }
 
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+    CaptrchaIsRequired = 10
+}
+
+export enum ResultCodesForCaptcha {
+    CaptrchaIsRequired = 10
+}
+
+type MeResponseType = {
+    data: { id: number, email: string, login: string}
+    resultCode: ResultCodesEnum
+    messages: Array<string>
+}
+
+type LoginResponseType = {
+    resultCode: ResultCodesEnum | ResultCodesForCaptcha
+    messages: Array<string>
+    data: { userId: number}
+}
+
 export const authAPI = {
     async me() {
-        return await instance.get(`auth/me`);
+        return await instance.get<MeResponseType>(`auth/me`).then(res => res.data);
     },
-    async login (email, password, rememberMe=false, captcha=null) {
-        return instance.post('auth/login', { email, password, rememberMe, captcha });
+    async login (email: string, password: string, rememberMe=false, captcha: null | string = null) {
+        return instance.post<LoginResponseType>('auth/login', { email, password, rememberMe, captcha })
+        .then(res => res.data);
     },
     async logout () {
         return instance.delete('auth/login');
@@ -77,6 +101,8 @@ export const securityAPI = {
     },
 
 } 
+
+
 
 
 

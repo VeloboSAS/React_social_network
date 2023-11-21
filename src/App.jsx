@@ -1,5 +1,5 @@
 import React, {Component, lazy, Suspense} from 'react'
-import './App.css'
+import s from './App.module.css'
 import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
@@ -39,10 +39,10 @@ class App extends Component {
       return <Preloader/>
     }
     return (
-        <div className='app-wrapper'>
+        <div className={s.appWrapper}>
           <HeaderContainer />
           <Navbar />
-          <div className="app-wrapper-content">
+          <div className={s.appWrapperContent}>
             <Suspense fallback={<div><Preloader/></div>}>
                   <Routes>
                       <Route exact path="/" element={<Navigate to={'/profile'} /> } />

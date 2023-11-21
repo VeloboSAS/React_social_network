@@ -1,6 +1,7 @@
 import React, {FC} from "react"
 import logo from '../../images/logo192.png'
 import s from './Header.module.css'
+import buttonStyle from '../../App.module.css'
 import {NavLink} from 'react-router-dom'
 
 type PropsType = {
@@ -14,7 +15,8 @@ const Header: FC<PropsType> = (props) => {
         <header className={s.header}>
             <img src={logo} alt='logo'/>
             <div className={s.loginBlock}>
-                { props.isAuth ? <div>{props.login} - <button className={s.btn} onClick={props.logout}>Log Out</button></div>
+                { props.isAuth ? <div>{props.login} - <button className={buttonStyle.btn} 
+                 onClick={props.logout}>Log Out</button></div>
                 : <NavLink to={'/login'}>Login</NavLink> }
             </div>
         </header>
