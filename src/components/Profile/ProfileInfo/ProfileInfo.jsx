@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import s from './ProfileInfo.module.css';
+import buttonStyle from '../../../App.module.css'
+import inputFile from '../../../App.module.css'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import userPhoto from '../../../images/user.jpg';
 import ProfileDataForm from "./ProfileDataForm";
@@ -31,8 +33,8 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, savePro
                 <div className={s.PhotoBlock}>
                     <img src={profile.photos.large != null ? profile.photos.large : userPhoto} className={s.photo} alt={profile.fullName} />
                     { isOwner && 
-                    <label className={s.inputFile}>
-                        <input className={s.input} type={"file"} onChange={onMainPhotoSelected}/>		
+                    <label className={inputFile.inputFile}>
+                        <input className={inputFile.input} type={"file"} onChange={onMainPhotoSelected}/>		
                         <span>Выберите файл</span>
                     </label>
 }
@@ -53,7 +55,7 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, savePro
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return <div>
                 <div>
-                    {isOwner && <div><button onClick={goToEditMode} className={s.btn}>Редактировать</button></div>}
+                    {isOwner && <div><button onClick={goToEditMode} className={buttonStyle.btn}>Редактировать</button></div>}
                 </div>
                 <div>
                     <b>Full name</b>: {profile.fullName}

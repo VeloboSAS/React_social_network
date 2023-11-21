@@ -2,11 +2,12 @@ import React from "react";
 import { reduxForm } from "redux-form";
 import { createField, Textarea } from "../../common/FormsControls/FormControls";
 import s from './ProfileInfo.module.css';
+import buttonStyle from '../../../App.module.css'
 import { Input } from "../../common/FormsControls/FormControls";
 
 const ProfileDataForm = ({profile, handleSubmit, error}) => {
     return <form onSubmit={handleSubmit}>
-            <div><button  className={s.btn}>Сохранить</button></div>
+            <div><button  className={buttonStyle.btn}>Сохранить</button></div>
             { error && <div className={s.formSummaryError}>
                         {error}
                         </div> }
