@@ -1,14 +1,14 @@
-import React, {Component} from "react";
-import { connect } from "react-redux";
-import {follow, unfollow, requestUsers} from '../../Redux/usersReducer';
-import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { compose } from "redux";
+import React, {Component, ComponentType} from "react"
+import { connect } from "react-redux"
+import {follow, unfollow, requestUsers} from '../../Redux/usersReducer'
+import Users from "./Users"
+import Preloader from "../common/Preloader/Preloader"
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { compose } from "redux"
 import { getPageSize, getTotalUsersCount,
-     getCurrentPage, getIsFetching, getFollowingInProgress, getUsers  } from "../../Redux/usersSelectors";
-import { UsersType } from "../../Types/types";
-import { AppStateType } from "../../Redux/redux-store";
+     getCurrentPage, getIsFetching, getFollowingInProgress, getUsers  } from "../../Redux/usersSelectors"
+import { UsersType } from "../../Types/types"
+import { AppStateType } from "../../Redux/redux-store"
 
 type MapStatePropsType = {
     currentPage: number
@@ -70,10 +70,11 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType  => {
         followingInProgress: getFollowingInProgress(state),
 }}
  
-export default compose<PropsType>(
-    //TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState
+export default compose<ComponentType>(
     connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>
     (mapStateToProps, {follow, unfollow, requestUsers: requestUsers}),
     withAuthRedirect, 
 )(UsersContainer)
+
+
 
