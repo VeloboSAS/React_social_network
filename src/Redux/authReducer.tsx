@@ -1,7 +1,9 @@
-import { authAPI, ResultCodesEnum, ResultCodesForCaptcha, securityAPI } from "../api/api"
+import { authAPI } from "../api/authAPI";
+import { securityAPI } from "../api/securityAPI";
 import { stopSubmit } from "redux-form"
 import { AppStateType } from "./redux-store"
 import { ThunkAction } from "redux-thunk"
+import { ResultCodesEnum, ResultCodesForCaptchaEnum } from "../api/api";
 
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'samurai-network/auth/GET_CAPTCHA_URL_SUCCESS';
@@ -68,7 +70,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
             //success, get auth data
             dispatch(getAuthUserData());
         } else {
-            if (loginData.resultCode === ResultCodesForCaptcha.CaptrchaIsRequired ){
+            if (loginData.resultCode === ResultCodesForCaptchaEnum.CaptrchaIsRequired ){
                 dispatch(getCaptchaUrl())
             }
             let message = loginData.messages.length > 0 ? loginData.messages[0] : "Some Error"

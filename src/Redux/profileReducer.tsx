@@ -1,4 +1,4 @@
-import { usersAPI, profileAPI } from "../api/api"
+import { profileAPI } from "../api/profileAPI"
 import { stopSubmit } from "redux-form"
 import { PhotosType, PostsType, ProfileType } from "../Types/types"
 import { AppStateType } from "./redux-store"
@@ -10,7 +10,6 @@ const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_STATUS = "SET_STATUS"
 const DELETE_POST = "DELETE_POST"
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS"
-
 
 let initialState = {
     posts:  [
@@ -25,7 +24,6 @@ let initialState = {
 };
 
 export type InitialStateType = typeof initialState
-
 
 const profileReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch(action.type) {
@@ -107,19 +105,18 @@ export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType
 //  type DispatchType = Dispatch <ActionsType>
  type ThunkType =  ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
-
 export const getUserProfile = (userId: number): ThunkType => async (dispatch, getState) => {
     try {
-        const response = await usersAPI.getProfile(userId)
-        dispatch(setUserProfile(response.data));
+        const data = await profileAPI.getProfile(userId)
+        dispatch(setUserProfile(data));
         } catch(error) {
             console.warn("user is not defined")
         }};
 
 export const getStatus = (userId: number): ThunkType => async (dispatch, getState) => {
     try {
-        const response = await profileAPI.getStatus(userId)
-        dispatch(setStatus(response.data));
+        const data = await profileAPI.getStatus(userId)
+        dispatch(setStatus(data));
         } catch(error) {
             console.warn("status is not returned in request")
         }} ;
@@ -127,36 +124,36 @@ export const getStatus = (userId: number): ThunkType => async (dispatch, getStat
 
 export const updateStatus = (status: string): ThunkType => async (dispatch, getState) => {
     try {
-        const response = await profileAPI.updateStatus(status)
-        if (response.data.resultCode === 0) {
+        const data = await profileAPI.updateStatus(status)
+        if (data.resultCode === 0) {
             dispatch(setStatus(status));
         }} catch(error) {
             console.warn("status is not updated")
         }};
 
 export const savePhoto = (file: any): ThunkType => async (dispatch, getState) => {
-    const response = await profileAPI.savePhoto(file)
-        if (response.data.data.resultCode === 0) {
-            dispatch(savePhotoSuccess(response.data.data.photos));
+    const data = await profileAPI.savePhoto(file)
+        if (data.resultCode === 0) {
+            dispatch(savePhotoSuccess(data.data.photos));
         }}; 
         
 export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch: any, getState: any ) => {
     const userId = getState().auth.userId;
-    const response = await profileAPI.saveProfile(profile)
-        if (response.data.data.resultCode === 0) {
+    const data = await profileAPI.saveProfile(profile)
+        if (data.resultCode === 0) {
             dispatch(getUserProfile(userId));
         } else {
-                let wrongNetwork = response.data.messages[0]
+                let wrongNetwork = data.messages[0]
                     .slice(
-                    response.data.messages[0].indexOf(">") + 1,
-                    response.data.messages[0].indexOf(")")
+                    data.messages[0].indexOf(">") + 1,
+                    data.messages[0].indexOf(")")
                     )
                     .toLocaleLowerCase();
                 dispatch(stopSubmit("edit-profile", {
-                      contacts: { [wrongNetwork]: response.data.messages[0] }
+                      contacts: { [wrongNetwork]: data.messages[0] }
                     })
                   );
-                  return Promise.reject(response.data.messages[0]);
+                  return Promise.reject(data.messages[0]);
         }};         
     
 export default profileReducer;
