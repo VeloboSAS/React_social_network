@@ -70,8 +70,8 @@ class ProfileContainer extends Component{
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePages.profile,
-    status: state.profilePages.status,
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
     autorizedUserId: state.auth.userId,
     isAuth: state.auth.isAuth,
 })

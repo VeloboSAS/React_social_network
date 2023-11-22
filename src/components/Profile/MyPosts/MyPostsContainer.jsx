@@ -1,12 +1,12 @@
 import MyPosts from './MyPosts';
-import { actions} from '../../../Redux/profileReducer.tsx';
+import { actions} from '../../../Redux/profileReducer.ts';
 import { connect } from 'react-redux';
 
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.profilePages.posts,
-        newPostText: state.profilePages.newPostText,
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText,
     }
 }
 

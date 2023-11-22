@@ -9,8 +9,8 @@ import { reducer as formReducer } from 'redux-form'
 import appReducer from './appReducer'
 
 let rootReducers = combineReducers({
-    profilePages: profileReducer,
-    dialogsPages: dialogsReducer,
+    profilePage: profileReducer,
+    dialogsPage: dialogsReducer,
     sidedbar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
@@ -21,9 +21,7 @@ let rootReducers = combineReducers({
 type RootReducerType = typeof rootReducers
 export type AppStateType = ReturnType<RootReducerType>
 
-type PropertiesType<T> = T extends {[key: string]: infer U} ? U: never
-
-export type InferActionsTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropertiesType<T>>
+export type InferActionsTypes<T> = T extends {[key: string]: (...args: any[]) => infer U} ? U : never
 
 export type BaseThunkType<A extends Action, R = Promise<void>> =  ThunkAction<R, AppStateType, unknown, A>
 
