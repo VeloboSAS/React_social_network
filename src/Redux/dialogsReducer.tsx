@@ -1,6 +1,5 @@
 import { DialogType, MessagesType } from "../Types/types"
-
-const SEND_MESSAGE = "SEND-MESSAGE"
+import { InferActionsTypes } from "./redux-store"
 
 let initialState = {
     dialogs: [
@@ -17,12 +16,9 @@ let initialState = {
         ] as Array<MessagesType>,
 }
 
-export type InitialStateType = typeof initialState
-
-const dialogsReducer = (state = initialState, action: SendMessageCreatorActionType): InitialStateType => {
-
+const dialogsReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case  SEND_MESSAGE:
+        case  "SEND-MESSAGE":
             let body =  action.newMessageBody
             return {...state,
                 messages: [...state.messages, {id: 4, message: body}],
@@ -31,12 +27,12 @@ const dialogsReducer = (state = initialState, action: SendMessageCreatorActionTy
     }
 }  
 
-type SendMessageCreatorActionType = {
-    type: typeof SEND_MESSAGE,
-    newMessageBody: string
+export const actions = {
+    sendMessageCreator: (newMessageBody: string) => 
+    ({type: "SEND-MESSAGE", newMessageBody} as const)
 }
 
-export const sendMessageCreator = (newMessageBody: string): SendMessageCreatorActionType => 
-    ({type: SEND_MESSAGE, newMessageBody})
-
 export default dialogsReducer
+
+export type InitialStateType = typeof initialState
+type ActionsType = InferActionsTypes<typeof actions>
