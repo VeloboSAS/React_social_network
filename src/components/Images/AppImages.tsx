@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from "react";
-import Images from "./Images";
+import React, {useState, useEffect, FC} from "react"
+import Images from "./Images"
 
-
-
-const AppImages = () => {
+const AppImages: FC = () => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
@@ -17,7 +15,7 @@ const AppImages = () => {
         <div>
             <Images data={ images }/>
         </div>
-    );
+    )
 }
 
-export default AppImages;
+export default AppImages

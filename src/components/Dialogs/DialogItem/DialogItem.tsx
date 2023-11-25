@@ -3,13 +3,13 @@ import { NavLink } from "react-router-dom";
 import Ava from '../Ava/Ava';
 import s from '../Dialogs.module.css';
 
-type Propstype = {
+type PropsType = {
     id: number
     img: string
     name: string
 }
 
-const DialogItem: FC<Propstype> = (props) => {
+const DialogItem: FC<PropsType> = (props) => {
     let path = "/dialogs/" + props.id;
 
     //@ts-ignore

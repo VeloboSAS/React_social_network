@@ -24,7 +24,6 @@ type ParamsType = {
     history: any
 }
 
-
 type PropsType = MapPropsType & DispatchPropsType & ParamsType
 
 class ProfileContainer extends Component<PropsType>{

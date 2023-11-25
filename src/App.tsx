@@ -40,14 +40,14 @@ class App extends Component<MapPropsType & DispatchPropsType>{
 
   render() {
     if (!this.props.initialized) {
-      return <Preloader/>
+      return <Preloader isFetching={false}/>
     }
     return (
         <div className={s.appWrapper}>
           <HeaderContainer />
           <Navbar />
           <div className={s.appWrapperContent}>
-            <Suspense fallback={<div><Preloader/></div>}>
+            <Suspense fallback={<div><Preloader isFetching={false}/></div>}>
                   <Routes>
                       <Route  path="/" element={<Navigate to={'/profile'} /> } />
                       <Route  path="/dialogs/*" element={ <DialogsContainer />}/>
@@ -73,7 +73,7 @@ const mapStateToProps = (state: AppStateType) => ({
   
 let AppContainer = compose<ComponentType>(connect(mapStateToProps, {initializeApp}))(App)
 
-let SamuraiJSApp: FC = (props) => {
+let SamuraiJSApp: FC = () => {
           return  <BrowserRouter>
                     <Provider store={store}>
                         <AppContainer/>

@@ -1,16 +1,13 @@
-import React from "react";
-import s from './Navbar.module.css';
-import {NavLink} from "react-router-dom";
+import React, { FC } from "react"
+import s from './Navbar.module.css'
+import {NavLink} from "react-router-dom"
 
-
-
-const Navbar = () => {
-
-    const style = ({ isActive }) => ({
+const Navbar: FC = () => {
+    //@ts-ignore
+    const style = ({ isActive}) => ({
         fontWeight: isActive ? 'bold' : 'normal',
         color: isActive ? 'blue' : 'blueviolet',
-      });
-
+      })
 
     return (
         <nav className={s.nav}>
@@ -36,8 +33,8 @@ const Navbar = () => {
                 <NavLink to='/images' style={style}>Images</NavLink>
             </div>
         </nav>
-        );
+        )
     
 }
 
-export default  Navbar;
+export default  Navbar
