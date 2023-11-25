@@ -1,6 +1,6 @@
 import React, {Component, ComponentType, FC, lazy, Suspense} from 'react'
 import s from './App.module.css'
-import {BrowserRouter, Route, Routes, Navigate, useLocation, useNavigate, useParams} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
 import Login from './components/Login/Login'
@@ -53,7 +53,7 @@ class App extends Component<MapPropsType & DispatchPropsType>{
                       <Route  path="/dialogs/*" element={ <DialogsContainer />}/>
                       <Route  path="/profile/:userId" element={ <ProfileContainer  />}/>
                       <Route  path='/profile' element={<ProfileContainer />}/>
-                      <Route  path="/users" element={<UsersContainer/>}/>
+                      <Route  path="/users" element={<UsersContainer />}/>
                       <Route  path="/login" element={<Login />}/>
                       <Route  path="/count" element={<Count />}/>
                       <Route  path="/modal" element={<Modal />}/>

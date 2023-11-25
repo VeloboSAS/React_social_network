@@ -1,9 +1,12 @@
-import React from "react";
-import s from './Post.module.css';
-import Ava from './Ava/Ava';
+import React, { FC } from "react"
+import s from './Post.module.css'
+import Ava from './Ava/Ava'
 
-
-const Post = (props) => {
+type PropsType = {
+    message: string
+    likesCount: number
+}
+const Post: FC<PropsType> = (props) => {
 
     return (
                 <div className={s.posts}>    
@@ -16,4 +19,4 @@ const Post = (props) => {
         ); 
 }
 
-export default  Post;
+export default  Post

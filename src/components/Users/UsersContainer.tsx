@@ -1,4 +1,4 @@
-import React, {Component, ComponentType} from "react"
+import React, {Component, ComponentType, ElementType} from "react"
 import { connect } from "react-redux"
 import {follow, unfollow, requestUsers} from '../../Redux/usersReducer'
 import Users from "./Users"

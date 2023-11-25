@@ -28,7 +28,6 @@ const profileReducer = (state = initialState, action:ActionsType): InitialStateT
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: "",
             };
         }
         case  "SET_STATUS":{
