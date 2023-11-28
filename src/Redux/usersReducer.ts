@@ -16,7 +16,6 @@ let initialState = {
         term: '',
         friend: null as null | boolean
     },
-
 }
 // Reducer
 const usersReducer = (state = initialState, action: ActionsType): InitialState => {

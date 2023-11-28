@@ -4,13 +4,13 @@ import { FilterType } from "../../Redux/usersReducer"
 
 
 const usersSearchFormValidate = (values: any) => {
-    const errors = {}
-         return errors
+    const errors = {};
+    return errors;
 }
-
 type FormType = {
-    term: string,
-    friend: "true" | "false" | "null"
+    term:string
+    // friend: "true" | "false" | "null" 
+    friend: string
 }
 
 type PropsType = {
@@ -18,15 +18,16 @@ type PropsType = {
 }
 
 export const UsersSearchForm: FC<PropsType> = memo((props) => {
-
-    const submit = (values: FormType , { setSubmitting }: {setSubmitting: (isSubmiting: boolean) => void}) => {
+    debugger
+    const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         const filter: FilterType = {
             term: values.term,
-            friend: values.friend === "null" ? null: values.friend === "true" ? true: false
+            friend: values.friend === "null" ? null : values.friend === "true" ? true : false
         }
-        props.onFilterChanged(filter)
-        setSubmitting(false)
-    }
+ 
+         props.onFilterChanged(filter)
+         setSubmitting(false)
+     }
     return <div>
         <Formik
        initialValues={{term: '', friend: 'null' }}
