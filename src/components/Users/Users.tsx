@@ -8,19 +8,8 @@ import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount
 import {  useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from "../../Redux/redux-store"
 
-type PropsType = {
-    // currentPage: number,
-    // onPageChanged: (pageNumber: number) => void,
-    // onFilterChanged: (filter: FilterType) => void,
-    // totalUsersCount: number,
-    // pageSize: number,
-    // users: Array<UsersType>,
-    // followingInProgress: Array<number>,
-    // unfollow: (userId: number) => void,
-    // follow: (userId: number) => void,
-}
 
-export const Users: FC<PropsType> = (props) => {
+export const Users: FC = () => {
 
     const users = useSelector(getUsers)
     const totalUsersCount = useSelector(getTotalUsersCount)
@@ -43,11 +32,11 @@ export const Users: FC<PropsType> = (props) => {
         dispatch(requestUsers(1, pageSize, filter))
     }
 
-    const follow = (userId: number) => {
+    const followU = (userId: number) => {
         dispatch(follow(userId))
     }
 
-    const unfollow = (userId: number) => {
+    const unfollowU = (userId: number) => {
         dispatch(unfollow(userId))
     }
 
@@ -64,7 +53,7 @@ export const Users: FC<PropsType> = (props) => {
                 <div>
                     { 
                     users.map(u => <User user={u} followingInProgress={followingInProgress}
-                                                    unfollow={unfollow} follow={follow}
+                                                    unfollow={unfollowU} follow={followU}
                                                     key={u.id}/>
                     )}
                 </div>

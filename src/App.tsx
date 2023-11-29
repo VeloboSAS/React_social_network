@@ -3,7 +3,7 @@ import s from './App.module.css'
 import {Route, Routes, Navigate, BrowserRouter} from 'react-router-dom'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
-import Login from './components/Login/Login'
+import {LoginPage} from './components/Login/Login'
 import Page404 from './components/Page404/Page404';import {connect} from 'react-redux'
 import { initializeApp } from './Redux/appReducer'
 import Preloader from './components/common/Preloader/Preloader'
@@ -53,8 +53,8 @@ class App extends Component<MapPropsType & DispatchPropsType>{
                       <Route  path="/dialogs/*" element={ <DialogsContainer />}/>
                       <Route  path="/profile/:userId" element={ <ProfileContainer  />}/>
                       <Route  path='/profile' element={<ProfileContainer />}/>
-                      <Route  path="/users" element={<UsersPage/>}/>
-                      <Route  path="/login" element={<Login />}/>
+                      <Route  path="/users" element={<UsersPage pageTitle={'Samurais'}/>}/>
+                      <Route  path="/login" element={<LoginPage />}/>
                       <Route  path="/count" element={<Count />}/>
                       <Route  path="/modal" element={<Modal />}/>
                       <Route  path="/settings" element={<Settings />}/>

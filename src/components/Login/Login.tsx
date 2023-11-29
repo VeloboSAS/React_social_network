@@ -2,14 +2,14 @@ import React, { FC } from "react"
 import { InjectedFormProps, reduxForm } from 'redux-form'
 import { GetStringKeys, Input } from "../common/FormsControls/FormControls"
 import { required, maxLengthCreator, minLengthCreator  } from "../../utils/validators/validators"
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from "../../Redux/authReducer"
 import { Navigate }  from 'react-router-dom'
 import s from '../common/FormsControls/FormControls.module.css'
 import sl from './Login.module.css'
 import buttonStyle from '../../App.module.css'
 import { createField } from "../common/FormsControls/FormControls"
-import { AppStateType } from "../../Redux/redux-store"
+import { AppDispatch, AppStateType } from "../../Redux/redux-store"
 
 const maxLength20 = maxLengthCreator(20)
 const minLength2 = minLengthCreator(2)
@@ -41,15 +41,6 @@ const LoginForm: FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & 
 
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({form: 'Login'})(LoginForm)
 
-type MapStatePropsType = {
-    captchaUrl: string | null
-    isAuth: boolean
-}
-
-type MapDispatchPropstype = {
-    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
-}
-
 export type LoginFormValuesType = {
     captcha: string
     rememberMe: boolean
@@ -59,9 +50,15 @@ export type LoginFormValuesType = {
 
 type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>
 
-const Login: FC<MapStatePropsType & MapDispatchPropstype> = ({login, isAuth, captchaUrl}) => {
+export const LoginPage: FC = () => {
+
+    const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl)
+    const isAuth = useSelector((state:AppStateType) => state.auth.isAuth)
+
+    const dispatch: AppDispatch = useDispatch()
+
     const onSubmit = (formData: LoginFormValuesType) => {
-        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
     }
 
     if (isAuth) {
@@ -72,12 +69,5 @@ const Login: FC<MapStatePropsType & MapDispatchPropstype> = ({login, isAuth, cap
             <h1>LOGIN</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>
-    );  
+    ) 
 }
-
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-    captchaUrl: state.auth.captchaUrl,
-    isAuth: state.auth.isAuth,
-})
-
-export default connect(mapStateToProps, {login})(Login);
