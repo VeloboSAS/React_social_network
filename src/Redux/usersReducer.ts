@@ -80,7 +80,7 @@ export const actions = {
 }
 
  // Thunk  
-export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType, ): ThunkType => {
     return async (dispatch, getState) => {
     dispatch(actions.toogleIsFetching(true))
     dispatch(actions.setCurrentPage(page))

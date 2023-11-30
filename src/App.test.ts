@@ -1,10 +1,9 @@
+import ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
-import {SamuraiJSApp} from './App'
+import MainApp from './App'
 
-test('renders without crashing', () => {
-    const container = document.createElement('div')
-    const root = createRoot(container);
-    root.render(<SamuraiJSApp tab="home"/>)
-    root.unmount()
+it('renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(<MainApp/>, div)
+    ReactDOM.unmountComponentAtNode(div)
 })
-

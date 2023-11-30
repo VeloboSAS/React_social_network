@@ -1,6 +1,6 @@
-import { ComponentType } from "react"
+import { ComponentType, FC } from "react"
 import Dialogs from "./Dialogs"
-import { connect } from "react-redux"
+import { connect} from "react-redux"
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from 'redux'
 import { AppStateType } from '../../Redux/redux-store'
@@ -14,4 +14,5 @@ let mapStateToProps = (state: AppStateType) => {
 export default compose<ComponentType>(
     connect(mapStateToProps, {...actions}),
     withAuthRedirect
-)(Dialogs);
+)(Dialogs)
+

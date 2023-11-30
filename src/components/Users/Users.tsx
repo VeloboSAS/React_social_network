@@ -7,8 +7,12 @@ import { FilterType, requestUsers, follow, unfollow } from "../../Redux/usersRed
 import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsers, getUsersFilter } from "../../Redux/usersSelectors"
 import {  useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from "../../Redux/redux-store"
+import { useLocation, useNavigate } from "react-router-dom"
+import queryString from "query-string"
 
-
+type QueryParamsType = {
+    term?: string, page?: string, friend?: string
+}
 export const Users: FC = () => {
 
     const users = useSelector(getUsers)
@@ -20,9 +24,47 @@ export const Users: FC = () => {
 
     const dispatch: AppDispatch = useDispatch()
 
+    const navigate = useNavigate()
+    const location = useLocation()
+
     useEffect(() => {
-        dispatch(requestUsers(currentPage, pageSize, filter))
+        const parsed = queryString.parse(location.search) as QueryParamsType
+        let actulalPage = currentPage
+        let actualFilter = filter
+
+        if(!!parsed.page) actulalPage = Number(parsed.page)
+
+        if (!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string}
+
+        switch (parsed.friend) {
+            case "null":
+                actualFilter = {...actualFilter, friend: null }
+                break
+            case "true":
+                actualFilter = {...actualFilter, friend: true } 
+                break
+            case "false":
+                actualFilter = {...actualFilter, friend: false } 
+                break  
+        }    
+
+        dispatch(requestUsers(actulalPage, pageSize, actualFilter))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        
+        const query: QueryParamsType = {}
+        if (!!filter.term) query.term = filter.term
+        if (filter.friend !== null) query.friend = String(filter.friend)
+        if (currentPage !== 1) query.page = String(currentPage)
+
+        navigate({
+            pathname: '/users',
+            search: queryString.stringify(query),
+        })
+    }, [filter, currentPage, navigate])
+
 
     const onPageChanged = (pageNumber: number) => {
         dispatch(requestUsers(pageNumber, pageSize, filter))
@@ -60,5 +102,3 @@ export const Users: FC = () => {
             </div>
             </>
 }
-
-

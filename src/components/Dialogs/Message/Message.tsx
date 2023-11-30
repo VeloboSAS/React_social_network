@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import s from '../Dialogs.module.css';
+import React, { FC } from "react"
+import s from '../Dialogs.module.css'
 
 type PropsType = {
     message: string
@@ -10,4 +10,4 @@ const Message: FC<PropsType> = (props) => {
             <div className={s.message}>{props.message}</div>            
     )}
 
-export default Message;
+export default Message

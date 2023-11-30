@@ -28,6 +28,7 @@ const User: FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
                             </div>
                         </span>
                         <span>
+                            <div>{user.id}</div>
                             <div>{user.name}</div>
                             <div>{user.status}</div>
                         </span>

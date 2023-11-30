@@ -28,6 +28,7 @@ type PropsType = MapPropsType & DispatchPropsType & ParamsType
 
 class ProfileContainer extends Component<PropsType>{
 
+
     refreshProfile() {
         let userId: number | null = this.props.router.params.userId;
         if (!userId) {

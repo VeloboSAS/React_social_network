@@ -22,7 +22,7 @@ const ProfileInfo: FC<PropsType> = ({isOwner, profile, status, updateStatus, sav
     let [editMode, setEditMode] = useState(false);
 
     if (!profile) {
-        return <Preloader />}
+        return <Preloader isFetching={false} />}
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.files && e.target.files.length) {
