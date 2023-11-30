@@ -5,7 +5,7 @@ import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
 import {LoginPage} from './components/Login/Login'
 import Page404 from './components/Page404/Page404';import {Provider, useDispatch, useSelector} from 'react-redux'
-import { initializeApp } from './Redux/appReducer'
+import { initializeApp } from './Redux/Reducers/appReducer'
 import Preloader from './components/common/Preloader/Preloader'
 import store, { AppDispatch, AppStateType } from './Redux/redux-store'
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'))

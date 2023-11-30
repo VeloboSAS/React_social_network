@@ -1,8 +1,8 @@
-import { authAPI } from "../api/authAPI"
-import { securityAPI } from "../api/securityAPI"
+import { authAPI } from "../../api/authAPI"
+import { securityAPI } from "../../api/securityAPI"
 import { FormAction, stopSubmit } from "redux-form"
-import { BaseThunkType, InferActionsTypes } from "./redux-store"
-import { ResultCodesEnum, ResultCodesForCaptchaEnum } from "../api/api"
+import { BaseThunkType, InferActionsTypes } from "../redux-store"
+import { ResultCodesEnum, ResultCodesForCaptchaEnum } from "../../api/api"
 
 let initialState  = {
     userId:  null as number | null,

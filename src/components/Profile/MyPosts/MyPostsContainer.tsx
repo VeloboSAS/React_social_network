@@ -1,5 +1,5 @@
 import MyPosts, { DispatchMyPostsPropsType, MapMyPostsPropsType } from './MyPosts'
-import { actions} from '../../../Redux/profileReducer'
+import { actions} from '../../../Redux/Reducers/profileReducer'
 import { connect } from 'react-redux'
 import { AppStateType } from '../../../Redux/redux-store'
 

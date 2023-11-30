@@ -1,5 +1,5 @@
 import { getAuthUserData } from "./authReducer"
-import { BaseThunkType, InferActionsTypes } from "./redux-store"
+import { BaseThunkType, InferActionsTypes } from "../redux-store"
 import { FormAction} from "redux-form"
 
 let initialState = {

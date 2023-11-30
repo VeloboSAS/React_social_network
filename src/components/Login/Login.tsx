@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form'
 import { GetStringKeys, Input } from "../common/FormsControls/FormControls"
 import { required, maxLengthCreator, minLengthCreator  } from "../../utils/validators/validators"
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from "../../Redux/authReducer"
+import { login } from "../../Redux/Reducers/authReducer"
 import { Navigate }  from 'react-router-dom'
 import s from '../common/FormsControls/FormControls.module.css'
 import sl from './Login.module.css'

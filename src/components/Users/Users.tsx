@@ -3,7 +3,7 @@ import s from './Users.module.css'
 import Paginator from '../common/Paginator/Paginator'
 import User from "./User."
 import { UsersSearchForm } from "./UsersSearchForm"
-import { FilterType, requestUsers, follow, unfollow } from "../../Redux/usersReducer"
+import { FilterType, requestUsers, follow, unfollow } from "../../Redux//Reducers/usersReducer"
 import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsers, getUsersFilter } from "../../Redux/usersSelectors"
 import {  useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from "../../Redux/redux-store"

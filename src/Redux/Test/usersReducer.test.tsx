@@ -1,4 +1,4 @@
-import usersReducer, {InitialState, actions} from './usersReducer'
+import usersReducer, {InitialState, actions} from '../Reducers/usersReducer'
 
 let state: InitialState
 
@@ -27,6 +27,10 @@ beforeEach(() => {
         currentPage: 1,
         isFetching: false,
         followingInProgress: [] , //array of users id
+        filter: {
+            term: '',
+            friend: null as null | boolean
+        },
     }
 })
 
