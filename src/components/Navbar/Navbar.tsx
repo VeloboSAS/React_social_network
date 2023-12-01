@@ -18,7 +18,7 @@ const Navbar: FC = () => {
                 <NavLink to='/dialogs' style={style}>Messages</NavLink>
             </div>
             <div> 
-                <NavLink to='/users' style={style}>Users</NavLink>
+                <NavLink to='/developers' style={style}>Users</NavLink>
             </div>
             <div> 
                 <NavLink to='/count' style={style}>Count</NavLink>

@@ -1,9 +1,14 @@
-import React from "react";
-import s from './Ava.module.css';
+import React, { FC } from "react"
+import s from './Ava.module.css'
 // import ava from './ava.jpeg';
 
+type PropsType = {
+    id: number
+    img:  string
+}
 
-const Ava = (props) => {
+
+const Ava: FC<PropsType> = (props) => {
     return (
                 <div className={s.item}> 
                     <div className={s.img} >
@@ -13,4 +18,4 @@ const Ava = (props) => {
         ); 
 }
 
-export default  Ava;
+export default  Ava

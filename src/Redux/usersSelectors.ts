@@ -1,5 +1,8 @@
-import { createSelector } from "reselect";
-import { AppStateType } from "./redux-store";
+import { createSelector } from "reselect"
+import { AppStateType } from "./redux-store"
+
+
+//Users
 
 const getUsersSelector = (state: AppStateType) => {
     return state.usersPage.users;
@@ -33,3 +36,12 @@ export const getUsersFilter = (state: AppStateType) => {
     return state.usersPage.filter; 
 }
 
+//Auth
+
+export const selectIsAuth = (state: AppStateType) => {
+    return state.auth.isAuth
+}
+
+export const selectCurrentUserLogin = (state: AppStateType) => {
+    return state.auth.login
+}
