@@ -2,23 +2,24 @@
   display: grid;
   grid-template-areas:
   "h h"
-  "n c";
+  "n c"
+  "f f";
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 50px 1fr 40px;
   grid-template-columns: 2fr 10fr;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 } 
-
+/* 
 .appWrapperContent {
     grid-area: c;
     background-color: #51dad0;
     padding: 10px;
-}
+} */
 
 .btn {
   display: inline-block;	

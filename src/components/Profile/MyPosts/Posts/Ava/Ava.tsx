@@ -1,12 +1,10 @@
 import React, { FC } from "react"
 import s from './Ava.module.css'
-// import ava from './ava.jpeg';
 
 type PropsType = {
-    id: number
+    id: string
     img:  string
 }
-
 
 const Ava: FC<PropsType> = (props) => {
     return (

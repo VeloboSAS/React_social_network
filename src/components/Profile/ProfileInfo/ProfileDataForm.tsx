@@ -5,6 +5,7 @@ import s from './ProfileInfo.module.css'
 import buttonStyle from '../../../App.module.css'
 import { Input } from "../../common/FormsControls/FormControls"
 import { ProfileType } from "../../../Types/types"
+import { Button } from "antd"
 
 type PropsType = {
     profile: ProfileType
@@ -13,8 +14,8 @@ type PropsType = {
 type ProfileTypeKeys = GetStringKeys<ProfileType>
 
 const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({profile, handleSubmit, error}) => {
-    return <form onSubmit={handleSubmit}>
-            <div><button  className={buttonStyle.btn}>Сохранить</button></div>
+    return <form onSubmit={handleSubmit} style={{marginLeft: '20px'}}>
+            <div><button  className={buttonStyle.btn}>Save</button></div>
             { error && <div className={s.formSummaryError}>
                         {error}
                         </div> }

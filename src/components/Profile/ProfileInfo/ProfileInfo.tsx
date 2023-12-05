@@ -43,7 +43,7 @@ const ProfileInfo: FC<PropsType> = ({isOwner, profile, status, updateStatus, sav
                     { isOwner && 
                     <label className={inputFile.inputFile}>
                         <input className={inputFile.input} type={"file"} onChange={onMainPhotoSelected}/>		
-                        <span>Выберите файл</span>
+                        <span>Сhoose File</span>
                     </label>
 }
                 </div>
@@ -67,9 +67,9 @@ type ProfileDataPropsType = {
 }
 
 const ProfileData: FC<ProfileDataPropsType> = ({profile, isOwner, goToEditMode}) => {
-    return <div>
+    return <div style={{marginLeft: '30px'}}>
                 <div>
-                    {isOwner && <div><button onClick={goToEditMode} className={buttonStyle.btn}>Редактировать</button></div>}
+                    {isOwner && <div><button onClick={goToEditMode} className={buttonStyle.btn}>Edit</button></div>}
                 </div>
                 <div>
                     <b>Full name</b>: {profile.fullName}

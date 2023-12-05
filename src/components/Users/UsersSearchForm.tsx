@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik"
 import React, { FC, memo } from "react"
-import { FilterType } from "../../Redux/usersReducer"
+import { FilterType } from "../../Redux/Reducers/usersReducer"
 import { getUsersFilter } from "../../Redux/usersSelectors"
 import {  useSelector } from 'react-redux'
 
@@ -32,7 +32,7 @@ export const UsersSearchForm: FC<PropsType> = memo((props) => {
          props.onFilterChanged(filter)
          setSubmitting(false)
      }
-    return <div>
+    return <div >
         <Formik
           enableReinitialize
           initialValues={{term: filter.term, friend: String(filter.friend) as FriendFormType }}
@@ -41,7 +41,7 @@ export const UsersSearchForm: FC<PropsType> = memo((props) => {
        >
 
        {({ isSubmitting }) => (
-         <Form>
+         <Form style={{marginLeft: '30px'}}>
            <Field type="text" name="term" />
            <Field name="friend" component="select">
                 <option value="null">All</option>

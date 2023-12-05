@@ -11,7 +11,7 @@ const Post: FC<PropsType> = (props) => {
     return (
                 <div className={s.posts}>    
                     <div className={s.item}>
-                        <Ava />
+                        <Ava id={""} img={""} />
                         {props.message}
                     </div>
                     <span>like</span>{props.likesCount}
