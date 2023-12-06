@@ -24,13 +24,13 @@ export const Header: FC = () => {
     const { Header } = Layout
     return (
             <Header style={{backgroundColor: HEADER, color: TEXT, width: '100%', height: 'auto'}}>
-                <Row>
-                    <Col  span={5}>
+                <Row style={{overflow: 'hidden'}}>
+                    <Col  span={10} >
                         <Menu style={{backgroundColor: HEADER, color: 'white'}} mode="horizontal" defaultSelectedKeys={['1']} >
                             <Menu.Item key="1"><Link to='/developers'>Developers</Link></Menu.Item> 
                         </Menu>
                     </Col>
-                    <Col span={6} offset={13} style={{ paddingLeft: '50px'}}>
+                    <Col span={6}  style={{textAlign: 'right',  marginLeft: 'auto', marginRight: 0}}>
                     { isAuth?  <>
                 
                     <Avatar style={{marginRight: '20px'}} icon={<UserOutlined />} />

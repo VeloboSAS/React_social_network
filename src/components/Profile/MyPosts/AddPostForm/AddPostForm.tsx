@@ -4,6 +4,7 @@ import {required, maxLengthCreator, minLengthCreator} from '../../../../utils/va
 import { createField, GetStringKeys, Textarea } from "../../../common/FormsControls/FormControls"
 import s from './../MyPosts.module.css'
 import buttonStyle from '../../../../App.module.css'
+import { Button } from "antd"
 
 const maxLength10 = maxLengthCreator(10)
 const minLength2 = minLengthCreator(2)
@@ -26,6 +27,7 @@ export const AddNewPostForm: FC<InjectedFormProps<AddPostFormValuesType, PropsTy
             </div>
             <div>
             <button className={buttonStyle.btn} >Add Post</button>
+            {/* <Button type='primary'>Add Post</Button> */}
             </div> 
             </div>    
         </form>

@@ -1,5 +1,4 @@
 import {FC, lazy, memo, Suspense, useEffect } from 'react'
-
 import {Route, Routes, Navigate, BrowserRouter, NavLink} from 'react-router-dom'
 import {LoginPage} from './components/Login/Login'
 import Page404 from './components/Page404/Page404';import {Provider, useDispatch, useSelector} from 'react-redux'
@@ -7,20 +6,17 @@ import { initializeApp } from './Redux/Reducers/appReducer'
 import Preloader from './components/common/Preloader/Preloader'
 import store, { AppDispatch, AppStateType } from './Redux/redux-store'
 
-
 import { Layout, Menu } from 'antd'
 import SubMenu from 'antd/es/menu/SubMenu'
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header/Header'
 
 const {Content, Footer, Sider } = Layout
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfilePage = lazy(() => import('./components/Profile/ProfileContainer'))
 const UsersPage = lazy(() => import('./components/Users/UsersContainer'))
-const Count = lazy(() => import('./components/Count/Count'))
-const Modal = lazy(() => import('./components/Modal/Modal'))
+const ChatPage = lazy(() => import('./pages/Chat/ChatPage'))
 const Settings = lazy(() => import('./components/Settings/Settings'))
-const AppImages = lazy(() => import('./components/Images/AppImages'))
 
 
 const App: FC = memo(() => {
@@ -39,7 +35,7 @@ const SIDEBAR = '#44318D'
       const dispatch: AppDispatch = useDispatch()
       const initialize = () => dispatch(initializeApp())
   
-  //useEffect Hooks
+  //useEffect Hook
       useEffect(() => {
           initialize()
       }, [])
@@ -53,7 +49,7 @@ const SIDEBAR = '#44318D'
           <Header/>
           <Content >
             <Layout style={{ background: CONTENT }}>
-              <Sider  width={220}>
+              <Sider  width={'18vw'}>
                 <Menu 
                   mode="inline"
                   defaultSelectedKeys={['1']}
@@ -72,10 +68,8 @@ const SIDEBAR = '#44318D'
                   <SubMenu key="sub3" title="Settings"> 
                     <Menu.Item key="1"><NavLink to='/settings'>Settings</NavLink></Menu.Item> 
                   </SubMenu>
-                  <SubMenu key="sub4" title="Other"> 
-                    <Menu.Item key="1"><NavLink to='/count'>Count</NavLink></Menu.Item> 
-                    <Menu.Item key="2"><NavLink to='/modal' >Modal</NavLink></Menu.Item> 
-                    <Menu.Item key="3"><NavLink to='/images'>Images</NavLink></Menu.Item> 
+                  <SubMenu key="sub4" title="Chat"> 
+                    <Menu.Item key="1"><NavLink to='/chat'>ChatPage</NavLink></Menu.Item> 
                   </SubMenu> 
                 </Menu>
               </Sider>
@@ -88,11 +82,9 @@ const SIDEBAR = '#44318D'
                           <Route  path='/profile' element={<ProfilePage />}/>
                           <Route  path="/developers" element={<UsersPage pageTitle={'Samurais'}/>}/>
                           <Route  path="/login" element={<LoginPage />}/>
-                          <Route  path="/count" element={<Count />}/>
-                          <Route  path="/modal" element={<Modal />}/>
+                          <Route  path="/chat" element={<ChatPage />}/>
                           <Route  path="/settings" element={<Settings />}/>
-                        <Route  path="/images" element={<AppImages />}/>
-                        <Route  path="/*" element={<Page404 />}/>
+                          <Route  path="/*" element={<Page404 />}/>
 
                     </Routes>
                 </Suspense>
