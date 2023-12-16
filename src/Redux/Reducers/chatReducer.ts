@@ -1,21 +1,24 @@
 import { FormAction } from "redux-form"
 import { BaseThunkType, InferActionsTypes } from "../redux-store"
-import { ChatMessageType } from "../../pages/Chat/ChatPage"
-
+import { v4 } from 'uuid'
 import { Dispatch } from "redux"
-import { chatAPI, StatusType } from "../../api/chatAPI"
+import { chatAPI, ChatMessageApiType, StatusType } from "../../api/chatAPI"
 
+type ChatMessageType = ChatMessageApiType & {id: string}
 
 let initialState  = {
     messages:  [] as ChatMessageType[],
     status: 'pending' as StatusType
 }
+
+
 // Reducer
 const chatReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch(action.type) {
         case 'samurai-network/chat/MESSAGES_RECEIVED':
             return {...state,
-                    messages: [...state.messages, ...action.payload.messages]} 
+                    messages: [...state.messages, ...action.payload.messages.map( m => ({...m, id: v4()}))]
+                    .filter((m, index, array) => index >= array.length - 100)} 
         case 'samurai-network/chat/STATUS_CHANGED':
             return {...state,
                 status: action.payload.status
@@ -27,7 +30,7 @@ const chatReducer = (state = initialState, action: ActionsType): InitialStateTyp
 
 //Action Creator
 export const actions = {
-    messagesReceived: (messages: ChatMessageType[])  => 
+    messagesReceived: (messages: ChatMessageApiType[])  => 
      ({type: 'samurai-network/chat/MESSAGES_RECEIVED', payload: {messages}} as const),
      statusChanged: (status: StatusType)  => 
      ({type: 'samurai-network/chat/STATUS_CHANGED', payload: {status}} as const),
@@ -35,7 +38,7 @@ export const actions = {
 }
 
  // Thunk   
-let _newMessageHandler: ((message: ChatMessageType[]) => void) | null = null
+let _newMessageHandler: ((message: ChatMessageApiType[]) => void) | null = null
 
  const newMessageHandlerCreator = (dispatch: Dispatch) => {
     if (_newMessageHandler === null) {

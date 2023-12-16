@@ -1,15 +1,10 @@
 import { Button } from "antd"
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, memo, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { ChatMessageApiType } from "../../api/chatAPI"
 import { sendMessage, startMessagesListening, stopMessagesListening } from "../../Redux/Reducers/chatReducer"
 import { AppDispatch, AppStateType } from "../../Redux/redux-store"
 
-export type ChatMessageType = {
-    message: string,
-   photo:  string,
-   userId: number,
-   userName: string
-}
 
 const ChatPage: FC = () => {
     return <Chat/>
@@ -18,6 +13,7 @@ const ChatPage: FC = () => {
 const Chat: FC = () => {
 
     const dispatch: AppDispatch = useDispatch()
+
     const status = useSelector((state: AppStateType) => state.chat.status)
 
     useEffect(() => {
@@ -39,24 +35,42 @@ const Chat: FC = () => {
 }
 
 const Messages: FC = () => {
-
+    
     const messages = useSelector((state: AppStateType) => state.chat.messages)
+    const messagesAnchorRef = useRef<HTMLDivElement>(null)
+    const [isAutoSroll, setIsAutoScroll] = useState(false)
 
-    return <div style={{height: '400px', overflowY: 'auto'}}>
-        {messages.map((m, index) => <Message key={index} message={m}/>)}
+    const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+        let element = e.currentTarget
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300) {
+            !isAutoSroll && setIsAutoScroll(true)
+        } else {
+            isAutoSroll && setIsAutoScroll(false)
+        }
+    }
+
+    useEffect(() => {
+        if (isAutoSroll) {
+            messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth',  block: 'end'}) 
+        }
+    }, [isAutoSroll, messages])
+
+    return <div style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
+        {messages.map((m, id) => <Message key={id} message={m}/>)}
+        <div ref={messagesAnchorRef}></div>
 
     </div>
 }
 
-const Message: FC<{message: ChatMessageType}> = ({message}) => {
-
+const Message: FC<{message: ChatMessageApiType}> = memo(({message}) => {
+    console.log('>>>message')
     return <div>
         <img src={message.photo} style={{width: '30px'}} alt=''/> <b>{message.userName}</b>
         <br/>
         {message.message}
         <hr/>
     </div>
-}
+})
 
 const AddMessageForm: FC= () => {
 
